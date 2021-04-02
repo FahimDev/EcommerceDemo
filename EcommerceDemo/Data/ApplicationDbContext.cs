@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EcommerceDemo.Models;
 
 namespace EcommerceDemo.Data
 {
@@ -12,5 +13,7 @@ namespace EcommerceDemo.Data
             : base(options)
         {
         }
+
+        public DbSet<Login> Login { get; set; }
     }
 }
