@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20210402142251_addNewLoginTable.cs" />
     <Compile Remove="Data\Migrations\20210402142251_addNewLoginTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210404154929_productTable.cs" />
+    <Compile Remove="Data\Migrations\20210404154929_productTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

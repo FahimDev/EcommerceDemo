@@ -43,6 +43,57 @@ namespace EcommerceDemo.Data.Migrations
                     b.ToTable("Login");
                 });
 
+            modelBuilder.Entity("EcommerceDemo.Models.Products", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("catagory_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("company_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("location_id")
+                        .HasColumnType("int");
+
+                    b.Property<double>("minimum_order")
+                        .HasColumnType("float");
+
+                    b.Property<string>("packing_type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_brand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_material")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("product_unit")
+                        .HasColumnType("float");
+
+                    b.Property<string>("video_url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

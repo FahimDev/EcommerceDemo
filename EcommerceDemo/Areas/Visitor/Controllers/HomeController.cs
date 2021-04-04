@@ -6,22 +6,31 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using EcommerceDemo.Data;
 
 namespace EcommerceDemo.Controllers
 {
     [Area("Visitor")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ApplicationDbContext _db;
 
+        public HomeController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
+        private readonly ILogger<HomeController> _logger;
+        /*
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+        */
 
         public IActionResult Index()
         {
-            return View();
+            return View(_db.Products.ToList());
         }
 
         public IActionResult Privacy()
