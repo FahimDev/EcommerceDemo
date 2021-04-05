@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceDemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210404155018_productTable")]
-    partial class productTable
+    [Migration("20210405161413_logANDprodTables")]
+    partial class logANDprodTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,11 +58,8 @@ namespace EcommerceDemo.Data.Migrations
                     b.Property<int>("company_id")
                         .HasColumnType("int");
 
-                    b.Property<int>("location_id")
-                        .HasColumnType("int");
-
-                    b.Property<double>("minimum_order")
-                        .HasColumnType("float");
+                    b.Property<string>("minimum_order")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("packing_type")
                         .HasColumnType("nvarchar(max)");
@@ -85,8 +82,11 @@ namespace EcommerceDemo.Data.Migrations
                     b.Property<string>("product_name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("product_unit")
-                        .HasColumnType("float");
+                    b.Property<string>("product_price")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_sell")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("video_url")
                         .HasColumnType("nvarchar(max)");

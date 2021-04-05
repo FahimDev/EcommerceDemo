@@ -10,6 +10,14 @@
     <Compile Remove="Data\Migrations\20210402142251_addNewLoginTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20210404154929_productTable.cs" />
     <Compile Remove="Data\Migrations\20210404154929_productTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210405160012_logANDprod.cs" />
+    <Compile Remove="Data\Migrations\20210405160012_logANDprod.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210405160541_logANDprod.cs" />
+    <Compile Remove="Data\Migrations\20210405160541_logANDprod.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210405160613_logANDprodTable.cs" />
+    <Compile Remove="Data\Migrations\20210405160613_logANDprodTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210405160739_logANDprodTables.cs" />
+    <Compile Remove="Data\Migrations\20210405160739_logANDprodTables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8848,11 +8848,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\C# Zone\\ASP.NET Core\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo.csproj",
+      "projectUniqueName": "C:\\C# Zone\\ASP.NET Core\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo.csproj",
       "projectName": "EcommerceDemo",
-      "projectPath": "C:\\C# Zone\\ASP.NET Core\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo.csproj",
+      "projectPath": "C:\\C# Zone\\ASP.NET Core\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\C# Zone\\ASP.NET Core\\EcommerceDemo\\EcommerceDemo\\obj\\",
+      "outputPath": "C:\\C# Zone\\ASP.NET Core\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

@@ -56,11 +56,8 @@ namespace EcommerceDemo.Data.Migrations
                     b.Property<int>("company_id")
                         .HasColumnType("int");
 
-                    b.Property<int>("location_id")
-                        .HasColumnType("int");
-
-                    b.Property<double>("minimum_order")
-                        .HasColumnType("float");
+                    b.Property<string>("minimum_order")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("packing_type")
                         .HasColumnType("nvarchar(max)");
@@ -83,8 +80,11 @@ namespace EcommerceDemo.Data.Migrations
                     b.Property<string>("product_name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("product_unit")
-                        .HasColumnType("float");
+                    b.Property<string>("product_price")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("product_sell")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("video_url")
                         .HasColumnType("nvarchar(max)");
