@@ -130,12 +130,14 @@
                                         let prodName = node.textContent;
                                         let prodDes = $("#prodDescription").val();
                                         let prodImg = $("#prodImg").attr('src');
-                                        //let prodPrice = $("#").val();
+
+                                        var prodPrice = $("#prodPrice").text();
                                         //let prodID = $("#prodUnit").val();
-                                        //console.log("Hello World");
+                                        console.log(prodPrice);
                                         $("#prod_title").html(prodName);
                                         $("#prod_desc").html(prodDes);
                                         $("#prod-img").attr('src', prodImg);
+                                        $("#prod-cost").text(prodPrice);
                                     });
                                 });
                             </script>
@@ -183,11 +185,38 @@
                                                 </div>
                                                 <!--Group mask-->
                                             </div>
-                                            <div class="product-label">
-                                                <div class="label-element new-label">
-                                                    <span>New</span>
+                                            @if (double.Parse(item.product_sell) >= 0)
+                                            {
+                                                <div class="product-label">
+                                                    <div class="label-element deal-label">
+                                                        <span>@item.product_sell%</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="product-label">
+                                                    <div class="label-element new-label">
+                                                        <span>New</span>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                            <!--
+                                                <div class="product-label">
+                                                    <div class="label-element hotting-label">
+                                                        <span>Hot</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-label">
+                                                    <div class="label-element best-label">
+                                                        <span>Best</span>
+                                                    </div>
+                                                </div>
+
+                                            -->
+
                                         </div>
                                         <input type="hidden" id="prodId" name="quantity" value="@item.id">
                                         <input type="hidden" id="prodDescription" name="quantity" value="@item.product_description">
@@ -200,7 +229,7 @@
                                             <div class="product-title"><a id="prodName" class="title-5" href="./product.html">@item.product_name</a></div>
                                             <div class="product-price">
                                                 <span class="price">
-                                                    <span class="money" data-currency-usd="$20.00">৳@item.product_price</span>
+                                                    <span id="prodPrice" class="money" data-currency-usd="৳20.00">৳@item.product_price</span>
                                                 </span>
                                             </div>
                                         </div>
@@ -1355,7 +1384,7 @@
                                     </div>
                                 </div>
                                 <div id="quick-shop-price-container" class="product-price">
-                                    <span class="price"><span class="money" data-currency-usd="$10.00" data-currency="USD">$10.00</span></span>
+                                    <span class="price"><span id="prod-cost" class="money" data-currency-usd="৳10.00" data-currency="USD">৳10.00</span></span>
                                 </div>
                                 <div class="others-bottom">
                                     <div class="purchase-section">
