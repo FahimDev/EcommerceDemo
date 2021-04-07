@@ -218,7 +218,6 @@
                                             -->
 
                                         </div>
-                                        <input type="hidden" id="prodId" name="quantity" value="@item.id">
                                         <input type="hidden" id="prodDescription" name="quantity" value="@item.product_description">
                                         <div class="row-right animMix">
                                             <div class="rating-star">
@@ -226,7 +225,7 @@
                                                     <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span><span class="spr-badge-caption">No reviews</span>
                                                 </span>
                                             </div>
-                                            <div class="product-title"><a id="prodName" class="title-5" href="./product.html">@item.product_name</a></div>
+                                            <div class="product-title"><a id="prodName" asp-area="Visitor" asp-controller="Home" asp-action="Details" asp-route-id="@item.id" class="title-5">@item.product_name</a></div>
                                             <div class="product-price">
                                                 <span class="price">
                                                     <span id="prodPrice" class="money" data-currency-usd="৳20.00">৳@item.product_price</span>

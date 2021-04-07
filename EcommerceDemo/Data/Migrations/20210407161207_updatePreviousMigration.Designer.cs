@@ -4,14 +4,16 @@ using EcommerceDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceDemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210407161207_updatePreviousMigration")]
+    partial class updatePreviousMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,16 +83,7 @@ namespace EcommerceDemo.Data.Migrations
                     b.Property<DateTime>("created_at")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("image1_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image2_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image3_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image4_path")
+                    b.Property<string>("image_path")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("product_id")

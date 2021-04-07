@@ -18,5 +18,14 @@ namespace EcommerceDemo.Data
 
 
         public DbSet<Products> Products { get; set; }
+
+
+        public DbSet<ProductCatagories> ProductCatagories { get; set; }
+
+
+        public DbSet<ProductImages> ProductImages { get; set; }
+
+
+        public DbSet<ProductVolumes> ProductVolumes { get; set; }
     }
 }

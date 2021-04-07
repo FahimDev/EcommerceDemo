@@ -4,14 +4,16 @@ using EcommerceDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceDemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210407150452_productTableUpdate")]
+    partial class productTableUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,97 +43,6 @@ namespace EcommerceDemo.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Login");
-                });
-
-            modelBuilder.Entity("EcommerceDemo.Models.ProductCatagories", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("catagory_name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("policy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("product_volume_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("updated_at")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ProductCatagories");
-                });
-
-            modelBuilder.Entity("EcommerceDemo.Models.ProductImages", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("image1_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image2_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image3_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image4_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("product_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("updated_at")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ProductImages");
-                });
-
-            modelBuilder.Entity("EcommerceDemo.Models.ProductVolumes", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<float>("large")
-                        .HasColumnType("real");
-
-                    b.Property<float>("medium")
-                        .HasColumnType("real");
-
-                    b.Property<float>("small")
-                        .HasColumnType("real");
-
-                    b.Property<string>("unit")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("updated_at")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ProductVolumes");
                 });
 
             modelBuilder.Entity("EcommerceDemo.Models.Products", b =>

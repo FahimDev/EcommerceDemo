@@ -38,6 +38,13 @@ namespace EcommerceDemo.Controllers
             return View();
         }
 
+        public IActionResult Details(int id)
+        {
+            var data = from p in _db.Products join pc in _db.ProductCatagories on p.catagory_id equals pc.id where p.id == id select new { p , pc };
+            Console.WriteLine(data.ToList());
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

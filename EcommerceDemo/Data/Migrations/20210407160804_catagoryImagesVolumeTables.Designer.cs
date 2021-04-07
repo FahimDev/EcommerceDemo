@@ -4,14 +4,16 @@ using EcommerceDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceDemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210407160804_catagoryImagesVolumeTables")]
+    partial class catagoryImagesVolumeTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,9 +52,8 @@ namespace EcommerceDemo.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("catagory_name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("catagory_name")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("created_at")
                         .HasColumnType("datetime2");
@@ -81,17 +82,8 @@ namespace EcommerceDemo.Data.Migrations
                     b.Property<DateTime>("created_at")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("image1_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image2_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image3_path")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image4_path")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("image_path")
+                        .HasColumnType("real");
 
                     b.Property<int>("product_id")
                         .HasColumnType("int");
