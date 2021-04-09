@@ -27,5 +27,14 @@ namespace EcommerceDemo.Data
 
 
         public DbSet<ProductVolumes> ProductVolumes { get; set; }
+
+
+        public DbSet<Admins> Admins { get; set; }
+
+
+        public DbSet<Roles> EmpRoles { get; set; }
+
+
+        public DbSet<Logins> Logins { get; set; }
     }
 }

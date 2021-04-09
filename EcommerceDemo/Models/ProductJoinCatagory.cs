@@ -21,5 +21,17 @@ namespace EcommerceDemo.Models
         public String produc_sell { get; set; }
         public String minimum_order { get; set; }
 
+        //---------------------------------------
+        public float small { get; set; }
+        public float medium { get; set; }
+        public float large { get; set; }
+        public String unit { get; set; }
+
+        //----------------------------------------
+        public String image1_path { get; set; }
+        public String image2_path { get; set; }
+        public String image3_path { get; set; }
+        public String image4_path { get; set; }
+
     }
 }

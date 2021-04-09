@@ -47,22 +47,22 @@
                                         <div id="featuted-image-mobile" class="image featured-mobile">
                                             <div class="image-item">
                                                 <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
-                                                    <img src="~/assets/images/800x800.png" alt="Extra Crispy" data-item="1" />
+                                                    <img src="~/assets/prod/@Model.image1_path" alt="Extra Crispy" data-item="1" />
                                                 </a>
                                             </div>
                                             <div class="image-item">
                                                 <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
-                                                    <img src="~/assets/images/800x800.png" alt="Extra Crispy" data-item="2" />
+                                                    <img src="~/assets/prod/@Model.image2_path" alt="Extra Crispy" data-item="2" />
                                                 </a>
                                             </div>
                                             <div class="image-item">
                                                 <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
-                                                    <img src="~/assets/images/800x800.png" alt="Extra Crispy" data-item="3" />
+                                                    <img src="~/assets/prod/@Model.image3_path" alt="Extra Crispy" data-item="3" />
                                                 </a>
                                             </div>
                                             <div class="image-item">
                                                 <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
-                                                    <img src="~/assets/images/800x800.png" alt="Extra Crispy" data-item="4" />
+                                                    <img src="~/assets/prod/@Model.image4_path" alt="Extra Crispy" data-item="4" />
                                                 </a>
                                             </div>
                                         </div>
@@ -76,22 +76,22 @@
                                                 <div class="slider-3itemsc vertical-image-content">
                                                     <div class="image-vertical image active">
                                                         <a href="~/assets/images/800x800.png" class="cloud-zoom-gallery">
-                                                            <img src="~/assets/images/800x800.png" alt="Extra Crispy">
+                                                            <img src="~/assets/prod/@Model.image1_path" alt="Extra Crispy">
                                                         </a>
                                                     </div>
                                                     <div class="image-vertical image">
                                                         <a href="~/assets/images/800x800.png" class="cloud-zoom-gallery">
-                                                            <img src="~/assets/images/800x800.png" alt="Extra Crispy">
+                                                            <img src="~/assets/prod/@Model.image2_path" alt="Extra Crispy">
                                                         </a>
                                                     </div>
                                                     <div class="image-vertical image">
                                                         <a href="~/assets/images/800x800.png" class="cloud-zoom-gallery">
-                                                            <img src="~/assets/images/800x800.png" alt="Extra Crispy">
+                                                            <img src="~/assets/prod/@Model.image3_path" alt="Extra Crispy">
                                                         </a>
                                                     </div>
                                                     <div class="image-vertical image">
                                                         <a href="~/assets/images/800x800.png" class="cloud-zoom-gallery">
-                                                            <img src="~/assets/images/800x800.png" alt="Extra Crispy">
+                                                            <img src="~/assets/prod/@Model.image4_path" alt="Extra Crispy">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6" id="product-information">
-                                        <h1 itemprop="name" class="title">@Model.product_name</h1> <span><sub>@Model.catagory_name</sub></span>
+                                        <h1 itemprop="name" class="title">@Model.product_name</h1> <span class="spr-badge-caption">@Model.catagory_name</span>
                                         <div class="rating-content">
                                             <div class="rating-description">
                                                 <span class="spr-badge" data-rating="5.0">
@@ -126,7 +126,10 @@
                                                     <div class="select clearfix">
                                                         <div class="selector-wrapper variant-wrapper-size">
                                                             <label for="product-select-option-0">Size</label>
-                                                            <select class="single-option-selector" data-option="option1" id="product-select-option-0"><option value="Small">Small</option><option value="Medium">Medium</option><option value="Large">Large</option></select>
+                                                            <select class="single-option-selector" data-option="option1" id="product-select-option-0">
+                                                            <option value="Small">Small [@Model.small @Model.unit]</option>
+                                                            <option value="Medium">Medium [@Model.medium @Model.unit]</option>
+                                                            <option value="Large">Large [@Model.large @Model.unit]</option></select>
                                                         </div>
                                                         <div class="selector-wrapper variant-wrapper-topping">
                                                             <label for="product-select-option-2">Topping</label>
@@ -319,9 +322,9 @@
                                             <div class="tab-pane active" id="desc">
                                                 <p>@Model.product_details</p>
                                                 <ul class="angle-right">
-                                                    <li><b>Ingradients:</b>@Model.product_material</li>
-                                                    <li><b>Packing:</b>@Model.packing_type</li>
-                                                    <li><b>Producer:</b><i>@Model.product_brand</i></li>
+                                                    <li><b>Ingradients: </b>@Model.product_material</li>
+                                                    <li><b>Packing: </b>@Model.packing_type</li>
+                                                    <li><b>Producer: </b><i>@Model.product_brand</i></li>
                                                 </ul>
                                             </div>
                                             <!--REVIEW-->
@@ -421,7 +424,7 @@
                                                         @Model.catagory_policy
 
                                                         <ul class="angle-right">
-                                                            <li><b>Minimum Order:</b>@Model.minimum_order UNIT<======</li>
+                                                            <li><b>Minimum Order:</b>@Model.minimum_order @Model.unit</li>
                                                         </ul>
                                                     </p>
                                                 </div>
