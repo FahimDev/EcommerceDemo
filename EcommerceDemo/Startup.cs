@@ -61,8 +61,16 @@ namespace EcommerceDemo
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                name: "Areas",
-                pattern: "{area=Visitor}/{controller=Home}/{action=Index}/{id?}");
+                    name: "Areas",
+                    pattern: "{area=Visitor}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "Areas",
+                    pattern: "{area=Admin}/{controller=DryDock}/{action=Registration}/{id?}"
+                );
+
+
                 endpoints.MapRazorPages();
             });
         }

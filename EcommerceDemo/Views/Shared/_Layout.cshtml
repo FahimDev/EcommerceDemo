@@ -46,7 +46,7 @@
     <script type="text/javascript" src="~/assets/javascripts/jquery.fancybox.js"></script>
 
 </head>
-<body class="index-template  fastfood_1">
+<body class="@ViewData["Class"]">
     <!--Header-->
     <header id="top" class="header clearfix">
         <div id="shopify-section-theme-header" class="shopify-section">
@@ -108,7 +108,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="./collections.html">
+                                                    <a asp-area="Admin" asp-controller="DryDock" asp-action="Registration">
                                                         <span>Fast food</span>
                                                     </a>
                                                 </li>
