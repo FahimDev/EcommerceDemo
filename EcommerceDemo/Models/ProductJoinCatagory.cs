@@ -32,6 +32,11 @@ namespace EcommerceDemo.Models
         public String image2_path { get; set; }
         public String image3_path { get; set; }
         public String image4_path { get; set; }
+        //---------------------------------------
+
+        public List<Reviews> reviews { get; set; }
+        public float rating { get; set; }
+        public int reviewers { get; set; }
 
     }
 }

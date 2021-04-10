@@ -53,6 +53,17 @@ namespace EcommerceDemo.Controllers
 
             var uthechiloGoGoNe = _db.ProductImages.Where(img => img.product_id == bara.product_id).FirstOrDefault();
 
+            var ratings = _db.Reviews.Where(review => review.product_id == bara.product_id).ToList() ;
+
+            //---------------------- AVG of Ratings
+            float sum = 0;
+            foreach (var item in ratings)
+            {
+                sum += item.rating;
+            }
+            sum = sum / ratings.Count;
+            //----------------------
+
             productDetails.product_id = bara.product_id;
             productDetails.product_name = bara.product_name;
             productDetails.catagory_name = bara.catagory_name;
@@ -74,7 +85,13 @@ namespace EcommerceDemo.Controllers
             productDetails.image2_path = uthechiloGoGoNe.image2_path;
             productDetails.image3_path = uthechiloGoGoNe.image3_path;
             productDetails.image4_path = uthechiloGoGoNe.image4_path;
-            //System.Diagnostics.Debug.WriteLine("--------------------->" + chad.medium);
+            productDetails.reviews = ratings;
+            productDetails.rating = sum;
+            productDetails.reviewers = ratings.Count;
+
+
+
+            System.Diagnostics.Debug.WriteLine("--------------------->" + ratings[0].review_body);
 
             return View(productDetails);
         }

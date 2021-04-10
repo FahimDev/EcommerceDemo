@@ -36,5 +36,8 @@ namespace EcommerceDemo.Data
 
 
         public DbSet<Logins> Logins { get; set; }
+
+
+        public DbSet<Reviews> Reviews { get; set; }
     }
 }
