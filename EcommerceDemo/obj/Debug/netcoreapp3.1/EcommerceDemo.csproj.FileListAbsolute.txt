@@ -500,3 +500,12 @@ C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netc
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DryDock\Registration.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\Microsoft.Web.Helpers.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\WebMatrix.Data.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\WebMatrix.WebData.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
