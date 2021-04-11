@@ -31,40 +31,61 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         [HttpPost]
         //[ValidateAntiForgeryToken]
         //[ActionName("registrationForm")]
-        public IActionResult Registration(Admins admin)
+        public IActionResult Registration(AdminRegistration admin)
         {
 
             //PM> Install-Package microsoft-web-helpers
             String salt = Crypto.GenerateSalt();
-            String password = "990331" + salt;
+            String password = admin.password + salt;
             String hashPass = Crypto.HashPassword(password);
-
-            admin.login_id = 1;
-            admin.created_at = DateTime.Now ;
-            admin.updated_at = DateTime.Now;
 
             Logins logins = new Logins();
             logins.role_id = 1;
-            logins.username = "fahim0373";
+            logins.username = admin.username;
             logins.password = hashPass;
             logins.token = salt;
             logins.created_at = DateTime.Now;
 
-            var isVerified = Crypto.VerifyHashedPassword(hashPass,"990331"+salt);
-            System.Diagnostics.Debug.WriteLine("================================>"+isVerified);
+            var isVerified = Crypto.VerifyHashedPassword(hashPass, admin.password + salt);
+            System.Diagnostics.Debug.WriteLine("================================>" + isVerified);
 
-            /*
+
 
             var insertLogin = _db.Logins.Add(logins);
             _db.SaveChanges();
-            System.Diagnostics.Debug.WriteLine(insertLogin.Entity.id);
-            */
+            //System.Diagnostics.Debug.WriteLine(insertLogin.Entity.id);
+
             //-------------------------------
-            //var insertReg = _db.Admins.Add(admin);
-            //_db.SaveChanges();
+
+            Admins admins = new Admins();
+            admins.login_id = insertLogin.Entity.id;
+            admins.created_at = DateTime.Now;
+            admins.full_name = admin.full_name;
+            admins.contact = admin.contact;
+            admins.email = admin.email;
+            admins.location = admin.location;
+  
+            var insertReg = _db.Admins.Add(admins);
+            _db.SaveChanges();
             //-------------------------------
-            //System.Diagnostics.Debug.WriteLine(admin.contact+admin.email);
+           
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Login(Login login)
+        {
+            
+            var getPass = _db.Logins.Where(user => user.username == login.username).FirstOrDefault();
+
+            String hashPass = getPass.password;
+            String salt = getPass.token;
+
+            var isVerified = Crypto.VerifyHashedPassword(hashPass, login.password + salt);
+            System.Diagnostics.Debug.WriteLine("================================>" + isVerified);
+            
+            return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+        }
+
     }
 }

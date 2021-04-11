@@ -247,17 +247,17 @@
                                                                 </ul>
                                                                 <div class="tab-content group_form">
                                                                     <div class="tab-pane active account-item-content" id="account-login">
-                                                                        <form method="post" action="./login.html" id="customer_login" accept-charset="UTF-8">
+                                                                        <form method="post" action="loginForm" id="customer_login" accept-charset="UTF-8">
                                                                             <div class="clearfix large_form form-item">
-                                                                                <input type="email" value="" name="customer[email]" class="form-control" placeholder="Email Address *" />
+                                                                                <input type="text"  value="" name="username" class="form-control" placeholder="User Name *" />
                                                                             </div>
                                                                             <div class="clearfix large_form form-password form-item">
-                                                                                <input type="password" value="" name="customer[password]" class="form-control password" placeholder="Password *" />
+                                                                                <input type="password" value="" name="password" class="form-control password" placeholder="Password *" />
                                                                                 <span class="cs-icon icon-eye"></span>
                                                                             </div>
                                                                             <div class="action_bottom">
-                                                                                <button class="_btn" type="submit">Login</button>
-                                                                                <a href="./login-recover.html"><span class="red"></span> Forgot your password?</a>
+                                                                                <button class="_btn" asp-area="Admin" asp-controller="DryDock" asp-action="Login" type="submit">Login</button>
+                                                                                <a href=""><span class="red"></span> Forgot your password?</a>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -413,16 +413,16 @@
                                                                     </ul>
                                                                     <div class="tab-content group_form">
                                                                         <div class="tab-pane active account-item-content" id="account-login-mobile">
-                                                                            <form method="post" action="./login.html" id="customer_login_mobile" accept-charset="UTF-8">
+                                                                            <form method="post" action="loginForm" id="customer_login_mobile" accept-charset="UTF-8">
                                                                                 <div class="clearfix large_form form-item">
-                                                                                    <input type="email" value="" name="customer[email]" class="form-control" placeholder="Email Address *" />
+                                                                                    <input type="text" value="" name="username" class="form-control" placeholder="User Name *" />
                                                                                 </div>
                                                                                 <div class="clearfix large_form form-password form-item">
-                                                                                    <input type="password" value="" name="customer[password]" class="form-control password" placeholder="Password *" />
+                                                                                    <input type="password" value="" name="password" class="form-control password" placeholder="Password *" />
                                                                                     <span class="cs-icon icon-eye"></span>
                                                                                 </div>
                                                                                 <div class="action_bottom">
-                                                                                    <button class="_btn" type="submit">Login</button>
+                                                                                    <button class="_btn" asp-area="Admin" asp-controller="DryDock" asp-action="Login" type="submit">Login</button>
                                                                                     <a href="./login-recover.html"><span class="red"></span> Forgot your password?</a>
                                                                                 </div>
                                                                             </form>

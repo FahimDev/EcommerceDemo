@@ -14,7 +14,7 @@ namespace EcommerceDemo.Data
         {
         }
 
-        public DbSet<Login> Login { get; set; }
+        //public DbSet<Login> Login { get; set; }
 
 
         public DbSet<Products> Products { get; set; }
