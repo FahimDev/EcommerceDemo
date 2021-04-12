@@ -34,6 +34,7 @@ namespace EcommerceDemo
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddSession(option => { option.IdleTimeout = TimeSpan.FromMinutes(15); }); //Custom add
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +53,8 @@ namespace EcommerceDemo
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession(); //Custom add
 
             app.UseRouting();
 

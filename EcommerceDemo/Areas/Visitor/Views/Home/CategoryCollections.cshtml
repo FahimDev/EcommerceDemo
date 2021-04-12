@@ -1,0 +1,69 @@
+﻿@using EcommerceDemo.Models;
+@model IEnumerable<ProductCatagories>
+@{
+    ViewData["Title"] = "Category Collections";
+    ViewData["Class"] = "fastfood_1";
+}
+
+<section class="heading-content">
+    <div class="heading-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="page-heading-inner heading-group">
+                    <div class="breadcrumb-group">
+                        <h1 class="hidden">List Collection</h1>
+                        <div class="breadcrumb clearfix">
+                            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                                <a href="./index.html" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+                            </span>
+                            <span class="arrow-space"></span>
+                            <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                                <a href="./collections-all.html" title="List Collection" itemprop="url"><span itemprop="title">List Collection</span></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="list-collection-content">
+    <div class="list-collections-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="products-wrapper">
+                    <div class="products-wrapper-inner">
+                        <div class="products masonry">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-sm-4 col-xs-12">
+                                    <div class="product ">
+                                        <!-- Begin product image -->
+                                        <div class="image">
+                                            <img src="~/assets/images/380x200.png" alt="Drinks">
+                                        </div>
+                                        <!-- End product image -->
+                                        <!-- Begin product description -->
+                                        <div class="col-info">
+                                            <div class="col-info-group">
+                                                <h4 class="title">@item.catagory_name</h4>
+                                                <span class="price">7  products</span>
+                                                <div class="hover_button">
+                                                    <a asp-area="Visitor" asp-controller="Home" asp-action="CategoryProductCollection" asp-route-id="@item.id" >
+                                                        View More
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End product description -->
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

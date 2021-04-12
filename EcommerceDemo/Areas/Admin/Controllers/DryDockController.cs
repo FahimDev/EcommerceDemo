@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EcommerceDemo.Models;
 using EcommerceDemo.Data;
 using System.Web.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace EcommerceDemo.Areas.Admin.Controllers
 {
@@ -25,7 +26,15 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         }
         public IActionResult Registration()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("roleIdSession") == 1)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            }
+            
         }
 
         [HttpPost]
@@ -64,11 +73,11 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             admins.contact = admin.contact;
             admins.email = admin.email;
             admins.location = admin.location;
-  
+
             var insertReg = _db.Admins.Add(admins);
             _db.SaveChanges();
             //-------------------------------
-           
+
             return View();
         }
 
@@ -76,14 +85,20 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         public IActionResult Login(Login login)
         {
             
-            var getPass = _db.Logins.Where(user => user.username == login.username).FirstOrDefault();
+            var loginData = _db.Logins.Where(user => user.username == login.username).FirstOrDefault();
 
-            String hashPass = getPass.password;
-            String salt = getPass.token;
+            String hashPass = loginData.password;
+            String salt = loginData.token;
 
             var isVerified = Crypto.VerifyHashedPassword(hashPass, login.password + salt);
             System.Diagnostics.Debug.WriteLine("================================>" + isVerified);
-            
+
+            HttpContext.Session.SetString("userSession", loginData.username );
+            HttpContext.Session.SetInt32("logIdSession", loginData.id);
+            HttpContext.Session.SetInt32("roleIdSession", loginData.role_id);
+
+            HttpContext.Session.GetString("userSession");
+
             return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
         }
 

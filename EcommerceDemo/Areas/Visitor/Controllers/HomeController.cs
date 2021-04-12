@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using EcommerceDemo.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace EcommerceDemo.Controllers
 {
@@ -36,6 +37,30 @@ namespace EcommerceDemo.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult CategoryCollections() {
+
+            return View(_db.ProductCatagories.ToList());
+        }
+
+        public IActionResult CategoryProductCollection(int id)
+        {
+            var prod = _db.Products.Where(p => p.catagory_id == id).ToList();
+
+            List <int> newProd  = new List<int>();
+            foreach (var item in prod)
+            {
+                if ((DateTime.Now - item.created_at).Days <= 30)
+                {
+                    newProd.Add(item.id);
+                }
+            }
+
+            //(DateTime.Now - p.created_at).Days
+
+            System.Diagnostics.Debug.WriteLine(newProd[0]);
             return View();
         }
 
@@ -91,8 +116,9 @@ namespace EcommerceDemo.Controllers
 
 
 
-            System.Diagnostics.Debug.WriteLine("--------------------->" + ratings[0].review_body);
-
+            //System.Diagnostics.Debug.WriteLine("--------------------->" + ratings[0].review_body);
+            System.Diagnostics.Debug.WriteLine("--------------------->" + HttpContext.Session.GetString("userSession"));
+           
             return View(productDetails);
         }
 

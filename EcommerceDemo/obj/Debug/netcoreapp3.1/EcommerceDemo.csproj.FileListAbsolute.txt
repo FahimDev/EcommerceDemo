@@ -509,3 +509,5 @@ C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netc
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\WebMatrix.Data.dll
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\WebMatrix.WebData.dll
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Visitor\Views\Home\CategoryCollections.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Visitor\Views\Home\CategoryProductCollection.cshtml.g.cs
