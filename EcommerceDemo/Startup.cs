@@ -70,7 +70,7 @@ namespace EcommerceDemo
 
                 endpoints.MapControllerRoute(
                     name: "Areas",
-                    pattern: "{area=Admin}/{controller=DryDock}/{action=Registration}/{id?}"
+                    pattern: "{area=Admin}/{controller=DryDock}/{action=Index}/{id?}"
                 );
 
 

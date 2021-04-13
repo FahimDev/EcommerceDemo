@@ -511,3 +511,7 @@ C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netc
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Visitor\Views\Home\CategoryCollections.cshtml.g.cs
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Visitor\Views\Home\CategoryProductCollection.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DryDock\Index.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Create.cshtml.g.cs

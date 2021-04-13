@@ -22,7 +22,14 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("roleIdSession") == 1)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            }
         }
         public IActionResult Registration()
         {
@@ -99,7 +106,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
             HttpContext.Session.GetString("userSession");
 
-            return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
         }
 
     }

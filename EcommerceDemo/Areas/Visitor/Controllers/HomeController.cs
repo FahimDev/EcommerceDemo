@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EcommerceDemo.Data;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceDemo.Controllers
 {
@@ -45,11 +46,27 @@ namespace EcommerceDemo.Controllers
             return View(_db.ProductCatagories.ToList());
         }
 
+        
         public IActionResult CategoryProductCollection(int id)
         {
+            var firstDay = DateTime.Today.AddDays(-30);
+            //-----> SQL for last 30 days data ===> .Where( p => p.created_at >= firstDay)
+
             var prod = _db.Products.Where(p => p.catagory_id == id).ToList();
 
-            List <int> newProd  = new List<int>();
+            //var viewProdList = _db.Products.Join( _db.Reviews, product => product.id, productReview => productReview.product_id , (product, productReview) => new { product_name = product.product_name , product_categoryID = product.catagory_id , review = productReview.rating } ).Where(product => product.product_categoryID == id).ToList();
+
+            //var prodAvgRating = _db.Reviews.GroupBy(g => g.product_id).Select( g => new { product_rating = g.Average(i => i.rating)}).ToList();
+
+            //var prodList = _db.Products.Join(_db.Reviews, product => product.id, prodReview => prodReview.product_id, (product, prodReview))
+            //var demo = _db.Database.ExecuteSqlCommand("SELECT products.product_name, AVG(reviews.rating) FROM products, ProductCatagories, reviews WHERE products.catagory_id = ProductCatagories.id AND reviews.product_id = products.id AND ProductCatagories.id = 1 GROUP By products.product_name", IEnumerable<ProductByCategory> );
+            /*
+            SELECT products.product_name, AVG(reviews.rating) FROM products, product_category, reviews WHERE 
+            products.category_id = product_category.id AND reviews.product_id = products.id AND product_category.id = 1 
+            GROUP By products.product_name
+            */
+
+            List<int> newProd  = new List<int>();
             foreach (var item in prod)
             {
                 if ((DateTime.Now - item.created_at).Days <= 30)
@@ -57,10 +74,11 @@ namespace EcommerceDemo.Controllers
                     newProd.Add(item.id);
                 }
             }
+                        
+            //System.Diagnostics.Debug.WriteLine(demo);
 
-            //(DateTime.Now - p.created_at).Days
+            //ProductByCategory prodByCat = new ProductByCategory();
 
-            System.Diagnostics.Debug.WriteLine(newProd[0]);
             return View();
         }
 
