@@ -30,11 +30,18 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         {
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
-                var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { cat_id = productCat.id, cat_name = productCat.catagory_name, cat_unit = productVol.unit }).ToList();
+                
+                var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();
+                /*
+                 ---------->Note<-----------
+                The VOLUME TABLE & The CATEGORY TABLE
+                Both must have enough values to show up on the 
+                DROPDOWN CATEGORY list in the VIEW. 
 
-                //CreateFormViewModel createFrom = new CreateFormViewModel();
-               
-
+                If any Category has it's name but the UNIT is missing
+                it can not be seen in the DROPDOWN LIST in the View
+                 */
+                
                 return View(createProduct);
             }
             else

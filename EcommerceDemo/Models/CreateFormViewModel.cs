@@ -7,8 +7,8 @@ namespace EcommerceDemo.Models
 {
     public class CreateFormViewModel
     {
-        public int cat_id { get; set; }
-        public String cat_name { get; set; }
-        public String cat_unit { get; set; }
+       
+        public ProductCatagories catBody { get; set; }
+        public ProductVolumes catUnit { get; set; }
     }
 }

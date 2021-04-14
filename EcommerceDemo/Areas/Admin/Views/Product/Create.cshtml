@@ -32,7 +32,7 @@
                                     <option class="pickUnit" id="0" value="0">None</option>
                                     @foreach (var item in Model)
                                     {
-                                        <option class="pickUnit" id="@item.cat_unit" value="@item.cat_id">@item.cat_name</option>
+                                        <option class="pickUnit" id="@item.catUnit.unit" value="@item.catBody.id">@item.catBody.catagory_name</option>
                                     }
                                 </select>
                             </div>
