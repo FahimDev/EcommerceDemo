@@ -1,5 +1,5 @@
 ﻿@using EcommerceDemo.Models;
-@model IEnumerable<ProductCatagories>
+@model IEnumerable<CreateFormViewModel>
 @{
     ViewData["Title"] = "Add Product";
 }
@@ -8,8 +8,8 @@
     $(document).ready(function () {
         $('#category').on('change', function () {
             //pickUnit
-            alert(this.value);
-            let unit = $(".pickUnit").attr('id');
+            //alert($(this).find('option:selected').attr('id'));
+            let unit = $(this).find('option:selected').attr('id');
             $("#minOrderLebel").text("Minimum Order ("+unit+")");
         });
     });   
@@ -29,9 +29,10 @@
                             <div class="card-body">
                                 <label for="company" class=" form-control-label">Select Product Category</label>
                                 <select id="category" data-placeholder="Choose a Category..." class="standardSelect" tabindex="1">
+                                    <option class="pickUnit" id="0" value="0">None</option>
                                     @foreach (var item in Model)
                                     {
-                                        <option class="pickUnit" id="@item.policy" value="@item.id">@item.catagory_name</option>
+                                        <option class="pickUnit" id="@item.cat_unit" value="@item.cat_id">@item.cat_name</option>
                                     }
                                 </select>
                             </div>
@@ -57,15 +58,39 @@
                             <div class="form-group">
                                 <label for="company" class=" form-control-label">Select Company</label>
                                 <select data-placeholder="Choose a company..." class="standardSelect" tabindex="1">
-                                    <option value="1">None</option>                         
+                                    <option value="1">None</option>
                                 </select>
-                            </div>                           
+                            </div>
                             <div class="form-group"><label for="brand" class=" form-control-label">Product Brand</label><input type="text" id="brand" placeholder="Enter product's brand name" class="form-control"></div>
                             <div class="form-group"><label for="ingredients" class=" form-control-label">Product Ingredients</label><input type="text" id="ingredients" placeholder="Enter your product ingredients" class="form-control"></div>
                             <div class="form-group"><label for="color" class=" form-control-label">Product Color</label><input type="text" id="color" placeholder="Enter product's color" class="form-control"></div>
                             <div class="form-group"><label for="minimumOrder" id="minOrderLebel" class=" form-control-label">Minimum Order</label><input type="number" id="order" placeholder="Minimim order" class="form-control"></div>
                             <div class="form-group"><label for="priceOff" class=" form-control-label">Product Sale</label><input type="number" id="sale" placeholder="Sale %" class="form-control"></div>
-                            <div class="form-group"><label for="price" class=" form-control-label">Product Price</label><input type="number" id="price" placeholder="৳ 00.00" class="form-control"></div>
+                            <div class="form-group">
+                                <label for="price" class=" form-control-label">Product Price</label>                                
+                                <input type="number" id="input3-group1" name="input3-group1" placeholder="৳ 00.00" class="form-control">
+                                <div class="input-group-addon">BDT (৳)</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="displayImage" class=" form-control-label">Display Image</label>
+                                <input type="file" id="file-input" name="file-input" class="form-control-file">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="displayImage" class=" form-control-label">Product Image One</label>
+                                <input type="file" id="file-input" name="file-input" class="form-control-file">
+
+                                <label for="displayImage" class=" form-control-label">Product Image Two</label>
+                                <input type="file" id="file-input" name="file-input" class="form-control-file">
+
+                                <label for="displayImage" class=" form-control-label">Product Image Three</label>
+                                <input type="file" id="file-input" name="file-input" class="form-control-file">
+
+                                <label for="displayImage" class=" form-control-label">Product Image Four</label>
+                                <input type="file" id="file-input" name="file-input" class="form-control-file">
+                            </div>
+
                             <div class="form-group">
                                 <button type="button" class="btn btn-success btn-lg btn-block">Submit</button>
                             </div>

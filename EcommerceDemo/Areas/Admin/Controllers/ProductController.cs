@@ -29,8 +29,13 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         public IActionResult Create()
         {
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
-            {                
-                return View(_db.ProductCatagories.ToList());
+            {
+                var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { cat_id = productCat.id, cat_name = productCat.catagory_name, cat_unit = productVol.unit }).ToList();
+
+                //CreateFormViewModel createFrom = new CreateFormViewModel();
+               
+
+                return View(createProduct);
             }
             else
             {
