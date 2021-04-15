@@ -515,3 +515,22 @@ C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netc
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DryDock\Index.cshtml.g.cs
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Create.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\Microsoft.Web.Helpers.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\WebMatrix.Data.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\WebMatrix.WebData.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DryDock\Index.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DryDock\Registration.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Create.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Product\Index.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Visitor\Views\Home\CategoryCollections.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Visitor\Views\Home\CategoryProductCollection.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Visitor\Views\Home\Details.cshtml.g.cs
+F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs

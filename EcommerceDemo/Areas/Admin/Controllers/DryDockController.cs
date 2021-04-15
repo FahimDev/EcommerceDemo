@@ -35,6 +35,8 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         {
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
+                var roles = _db.Roles.ToList();
+                ViewBag.Roles = roles;
                 return View();
             }
             else
@@ -49,6 +51,11 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         //[ActionName("registrationForm")]
         public IActionResult Registration(AdminRegistration admin)
         {
+
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
 
             //PM> Install-Package microsoft-web-helpers
             String salt = Crypto.GenerateSalt();
