@@ -39,5 +39,14 @@ namespace EcommerceDemo.Data
 
 
         public DbSet<Reviews> Reviews { get; set; }
+
+
+        public DbSet<Orders> Orders { get; set; }
+
+
+        public DbSet<Ordered_Products> Ordered_Products { get; set; }
+
+
+        public DbSet<Discounts> Discounts { get; set; }
     }
 }

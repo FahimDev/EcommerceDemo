@@ -26,9 +26,12 @@
                                 </div>
                                 <label for="name" class=" form-control-label">User Role</label>
                                 <div class="input-group mb-3">
-                                    <select asp-for="role_id" class="custom-select">
-                                        <option selected>Choose...</option>
+                                    <select name="role_id" asp-for="role_id" class="custom-select">
+                                        <option>Choose...</option>
                                         <option value="1">Admin</option>
+                                        <option value="2">Manager</option>
+                                        <option value="3">SEO Officer</option>
+                                        <option value="4">Customer</option>
                                     </select>
                                     <div class="input-group-append">
                                         <label class="input-group-text" for="inputGroupSelect02">Options</label>

@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EcommerceDemo.Models
 {
-    public class ProductCatagories
+    public class Ordered_Products
     {
+        [Required]
         public int id { get; set; }
         [Required]
-        public String catagory_name { get; set; }
-        public String catagory_img_path { get; set; }
-        public int product_volume_id { get; set; }
-        public String policy { get; set; }
+        public int order_id { get; set; }
+        [Required]
+        public int product_id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
     }
