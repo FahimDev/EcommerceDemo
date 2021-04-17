@@ -1,0 +1,92 @@
+﻿@using EcommerceDemo.Models;
+@model CategoryCreateView;
+@{
+    ViewData["Title"] = "Create Category";
+}
+
+
+<div id="right-panel" class="right-panel">
+
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+
+
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><strong>Create</strong><small> Category</small></div>
+                        <div class="card-body card-block">
+                            <form method="post" action="registrationForm" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <div class="form-group">
+                                    <label for="name" class=" form-control-label">Category Name</label>
+                                    <input type="text" value="" placeholder="Category Name" name="category_name" asp-for="category_name" class="form-control">
+                                    <span asp-validation-for="category_name" class="text-danger"></span>
+                                </div>
+                                <label for="name" class=" form-control-label">Unit</label>
+                                <div class="input-group mb-3">
+                                    <select name="category_unit" asp-for="category_unit" class="custom-select">
+                                        <option disabled>Choose...</option>
+                                        <option value="Kilogram">Kilogram (kg)</option>
+                                        <option value="gram">Gram (gm)</option>
+                                        <option value="Pound">Pound</option>
+                                        <option value="Milliliter">Milliliter (ml)</option>
+                                        <option value="Liter">Litrer</option>
+                                        <option value="Person">Person</option>
+                                        <option value="Inch">Inch</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="category_unit" class="text-danger"></span>
+
+                                <div class="form-group">
+                                    <label for="size" class=" form-control-label">Small</label>
+                                    <input type="number" value="" placeholder="Size (Small)" name="volume_small" asp-for="volume_small" class="form-control">
+                                </div>
+
+                                <span asp-validation-for="volume_small" class="text-danger"></span>
+
+                                <div class="form-group">
+                                    <label for="size" class=" form-control-label">Medium</label>
+                                    <input type="number" value="" placeholder="Size (Medium)" name="volume_medium" asp-for="volume_medium" class="form-control">
+                                </div>
+                                <span asp-validation-for="volume_medium" class="text-danger"></span>
+
+                                <div class="form-group">
+                                    <label for="size" class=" form-control-label">Large</label>
+                                    <input type="number" value="" placeholder="Size (Large)" name="volume_large" asp-for="volume_large" class="form-control">
+                                </div>
+                                <span asp-validation-for="volume_large" class="text-danger"></span>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-12"><label for="description" class=" form-control-label">Category Policy</label></div>
+                                    <div class="col-12 col-md-12"><textarea name="category_policy" asp-for="category_policy" id="textarea-input" rows="4" placeholder="Policy..." class="form-control"></textarea></div>
+                                </div>
+                                <span asp-validation-for="volume_large" class="text-danger"></span>
+
+                                <div class="form-group">
+                                    <label for="displayImage" class=" form-control-label">Category Display Image</label><input type="text" placeholder="380X200 (px)" disabled>
+                                    <input type="file" id="file-input" name="category_image" asp-for="category_image" class="form-control-file">
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-success btn-lg btn-block" type="submit" value="Create">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+
+            </div><!-- .animated -->
+        </div><!-- .content -->
+    </div><!-- /#right-panel -->
+    <!-- Right Panel -->
+</div>
+<script src="~/adminAsset/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/adminAsset/vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="~/adminAsset/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/adminAsset/assets/js/main.js"></script>
+
