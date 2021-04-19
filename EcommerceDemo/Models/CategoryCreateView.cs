@@ -23,6 +23,7 @@ namespace EcommerceDemo.Models
         public String category_policy { get; set; }
         [Required]
         public IFormFile category_image { get; set; }
+        public string imageblob { get; set; }
 
     }
 }

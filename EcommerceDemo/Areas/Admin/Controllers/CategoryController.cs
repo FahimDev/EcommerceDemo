@@ -9,6 +9,8 @@ using EcommerceDemo.Models;
 using EcommerceDemo.Data;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.Drawing;
+
 
 namespace EcommerceDemo.Areas.Admin.Controllers
 {
@@ -48,9 +50,13 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
+                System.Diagnostics.Debug.WriteLine("================================>" + categoryCreate.imageblob);
                 String uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "assets", "banner");
+                byte[] bytes = Convert.FromBase64String(categoryCreate.imageblob);
+                MemoryStream ms = new MemoryStream(bytes);
+                //Image pic = Image.FromStream(ms);
 
-                String imageName = Guid.NewGuid().ToString() + "_" + categoryCreate.category_image.FileName;
+                String imageName = Guid.NewGuid().ToString() + "_" + "dasda.png";
 
                 String imgPath = Path.Combine(uploadFolder, imageName);
 
