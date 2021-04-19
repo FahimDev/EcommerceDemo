@@ -30,19 +30,22 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         {
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
-                
-                var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();
                 /*
-                 ---------->Note<-----------
-                The VOLUME TABLE & The CATEGORY TABLE
-                Both must have enough values to show up on the 
-                DROPDOWN CATEGORY list in the VIEW. 
+                ---------->Note<-----------
+               The VOLUME TABLE & The CATEGORY TABLE
+               Both must have enough values to show up on the 
+               DROPDOWN CATEGORY list in the VIEW. 
 
-                If any Category has it's name but the UNIT is missing
-                it can not be seen in the DROPDOWN LIST in the View
-                 */
+               If any Category has it's name but the UNIT is missing
+               it can not be seen in the DROPDOWN LIST in the View
+                [arif]
+                */
+
+                var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();              
+
+                TempData["Category"] = createProduct;
                 
-                return View(createProduct);
+                return View();
             }
             else
             {
@@ -51,9 +54,20 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Products products)
+        public IActionResult Create(AddNewProduct products)
         {
-            return View();
+            var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();
+
+            TempData["Category"] = createProduct;
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            System.Diagnostics.Debug.WriteLine(products.product_name);
+            System.Diagnostics.Debug.WriteLine(products.category_id);
+            return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
         }
     }
 }

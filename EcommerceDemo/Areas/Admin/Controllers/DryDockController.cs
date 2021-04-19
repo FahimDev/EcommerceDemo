@@ -35,18 +35,12 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         {
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
-                /*
+                
                 var roles = _db.EmpRoles.ToList();
                 System.Diagnostics.Debug.WriteLine(roles[0].role_name);
                 TempData["Roles"] = roles;
                 
-                @foreach (var item in TempData["Roles"] as IEnumerable<Roles>)
-                                            {
-                                                <option value="@item.id">@item.role_name</option>
-                                            }
-
-
-                */
+                            
                 return View();
             }
             else
@@ -61,8 +55,11 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         //[ActionName("registrationForm")]
         public IActionResult Registration(AdminRegistration admin)
         {
+            var roles = _db.EmpRoles.ToList();
+            
+            TempData["Roles"] = roles;
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
@@ -102,7 +99,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             _db.SaveChanges();
             //-------------------------------
 
-            return View();
+            return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
         }
 
         [HttpPost]
