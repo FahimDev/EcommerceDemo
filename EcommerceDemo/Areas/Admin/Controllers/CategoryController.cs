@@ -77,7 +77,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
                 pic.Save(imgPath);
 
-                categoryCreate.category_image.CopyTo(new FileStream(imgPath, FileMode.Create));
+                //categoryCreate.category_image.CopyTo(new FileStream(imgPath, FileMode.Create));
 
                 ProductVolumes prodVol = new ProductVolumes();
                 prodVol.unit = categoryCreate.category_unit;
