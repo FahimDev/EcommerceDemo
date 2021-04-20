@@ -31,7 +31,7 @@
                                         <option value="gram">Gram (gm)</option>
                                         <option value="Pound">Pound</option>
                                         <option value="Milliliter">Milliliter (ml)</option>
-                                        <option value="Liter">Litrer</option>
+                                        <option value="Liter">Liter</option>
                                         <option value="Person">Person</option>
                                         <option value="Inch">Inch</option>
                                     </select>
@@ -70,7 +70,7 @@
                                     <label for="displayImage" class=" form-control-label">Category Display Image</label><input type="text" placeholder="380X200 (px)" disabled>
                                     <input type="file" id="m-image" name="category_image" asp-for="category_image" class="form-control-file">
                                 </div>
-                                <input type="text" asp-for="imageblob" name="imageblob" id="imageblob"/>
+                                <input type="hidden" asp-for="imageblob" name="imageblob" id="imageblob"/>
                                 <div class="form-group">
                                     <input asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-success btn-lg btn-block" type="submit" value="Create">
                                 </div>
@@ -164,7 +164,7 @@
         bs_modal
             .on("shown.bs.modal", function () {
                 cropper = new Cropper(image, {
-                    aspectRatio: 1,
+                    aspectRatio: 380 / 200,
                     viewMode: 3,
                     preview: ".preview",
                     dragMode: "none",
@@ -203,6 +203,7 @@
                         //let file = new File([base64data], "name.png");
                         $("#imageblob").val(base64data.toString());
                         console.log($("#imageblob").val())
+                        bs_modal.modal("hide");
                     };
                 });
               };
