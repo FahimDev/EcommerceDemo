@@ -536,3 +536,9 @@ F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Are
 F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Create.cshtml.g.cs
 F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Create.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\EcommerceDemo.csproj.ResolveComReference.cache
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

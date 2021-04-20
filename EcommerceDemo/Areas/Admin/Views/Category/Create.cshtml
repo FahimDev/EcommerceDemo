@@ -70,7 +70,7 @@
                                     <label for="displayImage" class=" form-control-label">Category Display Image</label><input type="text" placeholder="380X200 (px)" disabled>
                                     <input type="file" id="m-image" name="category_image" asp-for="category_image" class="form-control-file">
                                 </div>
-                                <input type="hidden" name="imageblob" id="imageblob"/>
+                                <input type="text" asp-for="imageblob" name="imageblob" id="imageblob"/>
                                 <div class="form-group">
                                     <input asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-success btn-lg btn-block" type="submit" value="Create">
                                 </div>
@@ -200,8 +200,8 @@
                     reader.readAsDataURL(blob);
                     reader.onloadend = function () {
                         var base64data = reader.result;
-                        let file = new File([base64data], "name.png");
-                        $("#imageblob").val(file);
+                        //let file = new File([base64data], "name.png");
+                        $("#imageblob").val(base64data.toString());
                         console.log($("#imageblob").val())
                     };
                 });

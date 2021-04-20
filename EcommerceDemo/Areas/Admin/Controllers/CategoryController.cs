@@ -20,7 +20,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
         private ApplicationDbContext _db;
         private IWebHostEnvironment _hostingEnvironment;
-
+        //[System.Drawing.dll]
         public CategoryController(ApplicationDbContext db, IWebHostEnvironment hostingEnvironment)
         {
             _db = db;
@@ -51,14 +51,31 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
                 System.Diagnostics.Debug.WriteLine("================================>" + categoryCreate.imageblob);
+                
+                String convert = categoryCreate.imageblob.Replace("data:image/png;base64,", String.Empty);
+
+
                 String uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "assets", "banner");
-                byte[] bytes = Convert.FromBase64String(categoryCreate.imageblob);
+
+                
+                byte[] bytes = Convert.FromBase64String(convert);
                 MemoryStream ms = new MemoryStream(bytes);
-                //Image pic = Image.FromStream(ms);
+                
+                Image pic = Image.FromStream(ms);
+                
+
+                /*
+                  Must install the System.Drawing.Common NuGet package. This contains Image and other related types like Bitmap.
+                    The command is given below ======>
+                        PM> Install-Package System.Drawing.Common
+                 */
+
 
                 String imageName = Guid.NewGuid().ToString() + "_" + "dasda.png";
 
                 String imgPath = Path.Combine(uploadFolder, imageName);
+
+                pic.Save(imgPath);
 
                 categoryCreate.category_image.CopyTo(new FileStream(imgPath, FileMode.Create));
 
