@@ -41,9 +41,9 @@ namespace EcommerceDemo.Areas.Admin.Controllers
                 [arif]
                 */
 
-                var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();              
+                //var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();              
 
-                TempData["Category"] = createProduct;
+                //TempData["Category"] = createProduct;
                 
                 return View();
             }
@@ -56,9 +56,9 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(AddNewProduct products)
         {
-            var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();
+            //var createProduct = _db.ProductCatagories.Join(_db.ProductVolumes, productCat => productCat.product_volume_id, productVol => productVol.id, (productCat, productVol) => new CreateFormViewModel { catBody = productCat, catUnit = productVol }).ToList();
 
-            TempData["Category"] = createProduct;
+           // TempData["Category"] = createProduct;
 
             if (!ModelState.IsValid)
             {

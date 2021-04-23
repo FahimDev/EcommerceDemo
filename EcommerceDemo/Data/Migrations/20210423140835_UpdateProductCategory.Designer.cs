@@ -4,14 +4,16 @@ using EcommerceDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceDemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210423140835_UpdateProductCategory")]
+    partial class UpdateProductCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -202,6 +204,9 @@ namespace EcommerceDemo.Data.Migrations
 
                     b.Property<string>("policy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("product_volume_id")
+                        .HasColumnType("int");
 
                     b.Property<float>("small")
                         .HasColumnType("real");

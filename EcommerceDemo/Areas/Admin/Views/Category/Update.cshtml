@@ -1,7 +1,7 @@
 ﻿@using EcommerceDemo.Models;
 @model CategoryCreateView;
 @{
-    ViewData["Title"] = "Create Category";
+    ViewData["Title"] = "Update Category";
 }
 
 
@@ -9,16 +9,18 @@
 
     <div class="content mt-3">
         <div class="animated fadeIn">
+
+
             <div class="row">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-header"><strong>Create</strong><small> Category</small></div>
+                        <div class="card-header"><strong>Update</strong><small> Category</small></div>
                         <div class="card-body card-block">
                             <form method="post" action="registrationForm" enctype="multipart/form-data" accept-charset="UTF-8">
                                 <div class="form-group">
                                     <label for="name" class=" form-control-label">Category Name</label>
-                                    <input type="text" value="" placeholder="Category Name" name="category_name" asp-for="category_name" class="form-control">
+                                    <input type="text" value="" placeholder="Category Name" name="category_name" asp-for="category_name" value="@Model.category_name" class="form-control">
                                     <span asp-validation-for="category_name" class="text-danger"></span>
                                 </div>
                                 <label for="name" class=" form-control-label">Unit</label>
@@ -26,7 +28,7 @@
                                     <select name="category_unit" asp-for="category_unit" class="custom-select">
                                         <option disabled>Choose...</option>
                                         <option value="Kilogram">Kilogram (kg)</option>
-                                        <option value="gram">Gram (gm)</option>
+                                        <option value="Gram">Gram (gm)</option>
                                         <option value="Pound">Pound</option>
                                         <option value="Milliliter">Milliliter (ml)</option>
                                         <option value="Liter">Liter</option>
@@ -41,36 +43,43 @@
 
                                 <div class="form-group">
                                     <label for="size" class=" form-control-label">Small</label>
-                                    <input type="number" value="" placeholder="Size (Small)" name="volume_small" asp-for="volume_small" class="form-control">
+                                    <input type="number" value="" placeholder="Size (Small)" name="volume_small" asp-for="volume_small" value="@Model.volume_small" class="form-control">
                                 </div>
 
                                 <span asp-validation-for="volume_small" class="text-danger"></span>
 
                                 <div class="form-group">
                                     <label for="size" class=" form-control-label">Medium</label>
-                                    <input type="number" value="" placeholder="Size (Medium)" name="volume_medium" asp-for="volume_medium" class="form-control">
+                                    <input type="number" value="" placeholder="Size (Medium)" name="volume_medium" asp-for="volume_medium" value="@Model.volume_medium" class="form-control">
                                 </div>
                                 <span asp-validation-for="volume_medium" class="text-danger"></span>
 
                                 <div class="form-group">
                                     <label for="size" class=" form-control-label">Large</label>
-                                    <input type="number" value="" placeholder="Size (Large)" name="volume_large" asp-for="volume_large" class="form-control">
+                                    <input type="number" value="" placeholder="Size (Large)" name="volume_large" asp-for="volume_large" value="@Model.volume_large" class="form-control">
                                 </div>
                                 <span asp-validation-for="volume_large" class="text-danger"></span>
 
                                 <div class="row form-group">
                                     <div class="col col-md-12"><label for="description" class=" form-control-label">Category Policy</label></div>
-                                    <div class="col-12 col-md-12"><textarea name="category_policy" asp-for="category_policy" id="textarea-input" rows="4" placeholder="Policy..." class="form-control"></textarea></div>
+                                    <div class="col-12 col-md-12">
+                                        <textarea name="category_policy" asp-for="category_policy" id="textarea-input" rows="4" placeholder="Policy..." class="form-control">
+                                    @Model.category_policy
+                                    </textarea>
+                                    </div>
                                 </div>
-                                <span asp-validation-for="volume_large" class="text-danger"></span>
-
+                                <span asp-validation-for="category_policy" class="text-danger"></span>
+                                <label for="displayImage" class=" form-control-label">Category Display Image</label><input type="text" placeholder="380X200 (px)" disabled>
+                                <div class="mb-3">
+                                    <img width="200" height="200" src="~/assets/banner/@Model.category_img_path" alt="@Model.category_name" />
+                                </div>
                                 <div class="form-group">
-                                    <label for="displayImage" class=" form-control-label">Category Display Image</label><input type="text" placeholder="380X200 (px)" disabled>
                                     <input type="file" id="m-image" name="category_image" asp-for="category_image" class="form-control-file">
                                 </div>
-                                <input type="hidden" asp-for="imageblob" name="imageblob" id="imageblob"/>
+                                <input type="hidden" asp-for="imageblob" name="imageblob" id="imageblob" />
+                               
                                 <div class="form-group">
-                                    <input asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-success btn-lg btn-block" type="submit" value="Create">
+                                    <input asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@Model.id" class="btn btn-success btn-lg btn-block" type="submit" value="Update">
                                 </div>
                             </form>
                         </div>
@@ -166,7 +175,7 @@
                     viewMode: 3,
                     preview: ".preview",
                     dragMode: "none",
-                    cropBoxResizable: false,                 
+                    cropBoxResizable: false,
                 });
             })
             .on("hidden.bs.modal", function () {
@@ -191,7 +200,7 @@
                     width: 380,
                     height: 200,
                 });
-                 
+
                 canvas.toBlob(function (blob) {
                     url = URL.createObjectURL(blob);
                     var reader = new FileReader();

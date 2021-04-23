@@ -87,12 +87,27 @@ namespace EcommerceDemo.Controllers
             ProductJoinCatagory productDetails = new ProductJoinCatagory();
     
             var bara = _db.Products.Join(_db.ProductCatagories, product => product.catagory_id , productCat => productCat.id, (product, productCat) 
-                => new { product_id = product.id, catagory_name = productCat.catagory_name, product_name = product.product_name , 
-                    product_details = product.product_description, catagory_policy = productCat.policy, product_image = product.product_img, 
-                    video_url = product.video_url, packing_type = product.packing_type, product_material = product.product_material, 
-                    product_brand = product.product_brand, product_price = product.product_price, produc_sell = product.product_sell, minimum_order = product.minimum_order , volume_id = productCat.product_volume_id } ).FirstOrDefault();
+                => new { 
+                    product_id = product.id,
+                    product_name = product.product_name,
+                    product_details = product.product_description,
+                    product_image = product.product_img,
+                    video_url = product.video_url,
+                    packing_type = product.packing_type,
+                    product_material = product.product_material,
+                    product_brand = product.product_brand,
+                    product_price = product.product_price,
+                    produc_sell = product.product_sell,
+                    minimum_order = product.minimum_order,
+                    catagory_name = productCat.catagory_name, 
+                    catagory_policy = productCat.policy, 
+                    small = productCat.small,
+                    medium = productCat.medium,
+                    large = productCat.large,
+                    unit = productCat.unit,
+                    } ).FirstOrDefault();
 
-            var chad = _db.ProductVolumes.Where(v => v.id == bara.volume_id).FirstOrDefault();
+            //var chad = _db.ProductVolumes.Where(v => v.id == bara.volume_id).FirstOrDefault();
 
             var uthechiloGoGoNe = _db.ProductImages.Where(img => img.product_id == bara.product_id).FirstOrDefault();
 
@@ -120,10 +135,10 @@ namespace EcommerceDemo.Controllers
             productDetails.product_price = bara.product_price;
             productDetails.produc_sell = bara.produc_sell;
             productDetails.minimum_order = bara.minimum_order;
-            productDetails.small = chad.small;
-            productDetails.medium = chad.medium;
-            productDetails.large = chad.large;
-            productDetails.unit = chad.unit;
+            productDetails.small = bara.small;
+            productDetails.medium = bara.medium;
+            productDetails.large = bara.large;
+            productDetails.unit = bara.unit;
             productDetails.image1_path = uthechiloGoGoNe.image1_path;
             productDetails.image2_path = uthechiloGoGoNe.image2_path;
             productDetails.image3_path = uthechiloGoGoNe.image3_path;

@@ -9,6 +9,7 @@ namespace EcommerceDemo.Models
 {
     public class CategoryCreateView
     {
+        public int id { get; set; }
         [Required]
         public String category_name { get; set; }
         [Required]
@@ -23,6 +24,7 @@ namespace EcommerceDemo.Models
         public String category_policy { get; set; }
         [Required]
         public IFormFile category_image { get; set; }
+        public string category_img_path { get; set; }
         public String imageblob { get; set; }
 
     }
