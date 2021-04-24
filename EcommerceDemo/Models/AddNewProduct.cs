@@ -18,7 +18,7 @@ namespace EcommerceDemo.Models
         public int company_id { get; set; }
         [Required]
         [Display(Name = "Product Display Image")]
-        public IFormFile product_image { get; set; }
+        public String h_product_image { get; set; }
         [Required]
         [Display(Name = "Product Video URL")]
         public String video_url { get; set; }
@@ -48,16 +48,16 @@ namespace EcommerceDemo.Models
         public String product_price { get; set; }
         [Required]
         [Display(Name = "Product Image [1]")]
-        public IFormFile image_one { get; set; }
+        public String h_image_one { get; set; }
         [Required]
         [Display(Name = "Product Image [2]")]
-        public IFormFile image_two { get; set; }
+        public String h_image_two { get; set; }
         [Required]
         [Display(Name = "Product Image [3]")]
-        public IFormFile image_three { get; set; }
+        public String h_image_three { get; set; }
         [Required]
         [Display(Name = "Product Image [4]")]
-        public IFormFile image_four { get; set; }
+        public String h_image_four { get; set; }
 
     }
 }

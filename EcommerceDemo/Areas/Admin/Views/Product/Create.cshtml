@@ -32,9 +32,9 @@
                                     <label for="company" class=" form-control-label">Select Product Category</label>
                                     <select name="category_id" id="category" data-placeholder="Choose a Category..." class="standardSelect" tabindex="1">
 
-                                        @foreach (var item in TempData["Category"] as IEnumerable<CreateFormViewModel>)
+                                        @foreach (var item in TempData["Category"] as IEnumerable<ProductCatagories>)
                                         {
-                                            <option id="@item.catUnit.unit" value="@item.catBody.id">@item.catBody.catagory_name</option>
+                                            <option id="@item.unit" value="@item.id">@item.catagory_name</option>
                                         }
 
                                     </select>
@@ -91,30 +91,30 @@
                                 <div class="form-group">
                                     <label for="displayImage" class=" form-control-label">Display Image</label>
                                     <input type="file" class="m-image" id="file-input" name="product_image">
-                                    <input type="text" class="m-image" name="h_product_image" id="product_image" />
-                                    <span asp-validation-for="product_image" class="text-danger"></span>
+                                    <input type="hidden" class="m-image" name="h_product_image" id="product_image" />
+                                    <span asp-validation-for="h_product_image" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="displayImage" class=" form-control-label">Product Image One</label>
                                     <input type="file" class="m-image" id="file-input" name="image_one">
-                                    <input type="text" name="h_image_one" id="image_one" />
-                                    <span asp-validation-for="image_one" class="text-danger"></span>
+                                    <input type="hidden" name="h_image_one" id="image_one" />
+                                    <span asp-validation-for="h_image_one" class="text-danger"></span>
 
                                     <label for="displayImage" class=" form-control-label">Product Image Two</label>
                                     <input type="file" class="m-image" id="file-input" name="image_two">
-                                    <input type="text" name="h_image_two" id="image_two" />
-                                    <span asp-validation-for="image_two" class="text-danger"></span>
+                                    <input type="hidden" name="h_image_two" id="image_two" />
+                                    <span asp-validation-for="h_image_two" class="text-danger"></span>
 
                                     <label for="displayImage" class=" form-control-label">Product Image Three</label>
                                     <input type="file" class="m-image" id="file-input" name="image_three">
-                                    <input type="text" name="h_image_three" id="image_three" />
-                                    <span asp-validation-for="image_three" class="text-danger"></span>
+                                    <input type="hidden" name="h_image_three" id="image_three" />
+                                    <span asp-validation-for="h_image_three" class="text-danger"></span>
 
                                     <label for="displayImage" class=" form-control-label">Product Image Four</label>
                                     <input type="file" class="m-image" id="file-input" name="image_four">
-                                    <input type="text" name="h_image_four" id="image_four" />
-                                    <span asp-validation-for="image_four" class="text-danger"></span>
+                                    <input type="hidden" name="h_image_four" id="image_four" />
+                                    <span asp-validation-for="h_image_four" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group">
@@ -179,9 +179,12 @@
             var image = document.getElementById("image");
             var cropper, reader, file;
 
+            var idName = "";
+
             $("body").on("change", ".m-image", function (e) {
                 var files = e.target.files;
-                console.log(e.target)
+                console.log("------------>h_" + e.target.name)
+                idName = e.target.name;
                 var done = function (url) {
                     image.src = url;
                     bs_modal.modal("show");
@@ -205,7 +208,7 @@
             bs_modal
                 .on("shown.bs.modal", function () {
                     cropper = new Cropper(image, {
-                        aspectRatio: 380 / 200,
+                        aspectRatio: 800 / 800,
                         viewMode: 3,
                         preview: ".preview",
                         dragMode: "none",
@@ -222,7 +225,7 @@
                     width: 160,
                     height: 160,
                 });
-
+                console.log("------------>" + idName);
                 canvas.toBlob(function (blob) {
                     url = URL.createObjectURL(blob);
                     var reader = new FileReader();
@@ -242,8 +245,8 @@
                             reader.onloadend = function () {
                                 var base64data = reader.result;
                                 //let file = new File([base64data], "name.png");
-                                $("#imageDisplay").val(base64data.toString());
-                                console.log($("#imageblob").val())
+                                $("#"+idName).val(base64data.toString());
+                                //console.log($("#imageblob").val())
                                 bs_modal.modal("hide");
                             };
                         });
