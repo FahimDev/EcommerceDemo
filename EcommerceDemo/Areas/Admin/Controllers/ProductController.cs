@@ -135,8 +135,41 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
                 //-------------------------------------------------------------------------------------------
 
-                //System.Diagnostics.Debug.WriteLine(products.product_name);
-                //System.Diagnostics.Debug.WriteLine(products.category_id);
+                Products product = new Products();
+                product.product_name = products.product_name;
+                product.catagory_id = products.category_id;
+                product.company_id = products.company_id;
+                product.product_img = imageName;
+                product.video_url = products.video_url;
+                product.product_description = products.product_description;
+                product.packing_type = products.packing_type;
+                product.product_material = products.product_material;
+                product.product_brand = products.product_brand;
+                product.product_color = products.product_color;
+                product.minimum_order = products.minimum_order;
+                product.product_sell = products.product_sell;
+                product.product_price = products.product_price;
+                product.created_at = DateTime.Now;
+
+                var insertProd = _db.Products.Add(product);
+                _db.SaveChanges();
+
+                System.Diagnostics.Debug.WriteLine("Insert Product Table================================>" + insertProd);
+
+
+                ProductImages productImageList = new ProductImages();
+                productImageList.product_id = insertProd.Entity.id;
+                productImageList.image1_path = imageNameOne;
+                productImageList.image2_path = imageNameTwo;
+                productImageList.image3_path = imageNameThree;
+                productImageList.image4_path = imageNameFour;
+                productImageList.created_at = DateTime.Now;
+
+                var insertProdImage = _db.ProductImages.Add(productImageList);
+
+                System.Diagnostics.Debug.WriteLine("Insert Product Images Table================================>" + insertProdImage);
+                _db.SaveChanges();
+
                 return View();
             }
             else

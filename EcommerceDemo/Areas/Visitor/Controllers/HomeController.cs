@@ -105,7 +105,7 @@ namespace EcommerceDemo.Controllers
                     medium = productCat.medium,
                     large = productCat.large,
                     unit = productCat.unit,
-                    } ).FirstOrDefault();
+                    } ).Where(product => product.product_id == id).FirstOrDefault();
 
             //var chad = _db.ProductVolumes.Where(v => v.id == bara.volume_id).FirstOrDefault();
 
