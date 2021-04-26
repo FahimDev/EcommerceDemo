@@ -31,7 +31,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_db.Products.ToList());
         }
 
         public IActionResult Create()
@@ -177,5 +177,30 @@ namespace EcommerceDemo.Areas.Admin.Controllers
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }
+
+
+        public IActionResult Update(int id)
+        {
+            var createProduct = _db.ProductCatagories.ToList();
+
+            TempData["Category"] = createProduct;
+
+            if (HttpContext.Session.GetInt32("roleIdSession") == 1)
+            {
+                var data = _db.Products.Where(products => products.id == id).FirstOrDefault();
+                System.Diagnostics.Debug.WriteLine("........................" + id);
+
+                AddNewProduct product = new AddNewProduct();
+                product.product_name = data.product_name;
+                product.product_description = data.product_description;
+                product.video_url = data.video_url;
+                return View(product);
+            }
+            else
+            {
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            }
+        }
+
     }
 }

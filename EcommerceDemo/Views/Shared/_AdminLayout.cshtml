@@ -48,7 +48,7 @@
                     <li class="active">
                         <a asp-area="Admin" asp-controller="DryDock" asp-action="Index"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+                    <h3 class="menu-title">Manage Store</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Product Category</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -60,7 +60,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Products</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a asp-area="Admin" asp-controller="Product" asp-action="Create">Add New Products</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">View Product List</a></li>
+                            <li><i class="fa fa-table"></i><a asp-area="Admin" asp-controller="Product" asp-action="Index">View Product List</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
