@@ -43,7 +43,28 @@ namespace EcommerceDemo.Controllers
 
         public IActionResult CategoryCollections() {
 
-            return View(_db.ProductCatagories.ToList());
+            var getAllCat = _db.Products.Join(_db.ProductCatagories, products =>
+            products.catagory_id, prodCat => prodCat.id, (products, prodCat)=> 
+            new { products, prodCat }).GroupBy( p => new { catID = p.products.catagory_id, name = p.prodCat.catagory_name ,img = p.prodCat.catagory_img_path  } ).Select(
+                prod =>  new  { count = prod.Count(), name = prod.Key.name, image = prod.Key.img , catId = prod.Key.catID}).ToList();
+
+            List<ShowAllCategories> showCat = new List<ShowAllCategories>();
+
+            foreach (var item in getAllCat)
+            {
+                ShowAllCategories sc = new ShowAllCategories
+                {
+                    category_name = item.name,
+                    category_img = item.image,
+                    product_count = item.count,
+                    id = item.catId,
+                };
+                showCat.Add(sc);
+            }
+
+            System.Diagnostics.Debug.WriteLine(getAllCat[0].name);
+
+            return View(showCat);
         }
 
         

@@ -1,5 +1,5 @@
 ﻿@using EcommerceDemo.Models;
-@model IEnumerable<ProductCatagories>
+@model IEnumerable<ShowAllCategories>
 @{
     ViewData["Title"] = "Category Collections";
     ViewData["Class"] = "fastfood_1";
@@ -40,16 +40,16 @@
                                     <div class="product ">
                                         <!-- Begin product image -->
                                         <div class="image">
-                                            <img src="~/assets/banner/@item.catagory_img_path" alt="Drinks">
+                                            <img src="~/assets/banner/@item.category_img" alt="Drinks">
                                         </div>
                                         <!-- End product image -->
                                         <!-- Begin product description -->
                                         <div class="col-info">
                                             <div class="col-info-group">
-                                                <h4 class="title">@item.catagory_name</h4>
-                                                <span class="price">7  products</span>
+                                                <h4 class="title">@item.category_name</h4>
+                                                <span class="price">@item.product_count  products</span>
                                                 <div class="hover_button">
-                                                    <a asp-area="Visitor" asp-controller="Home" asp-action="CategoryProductCollection" asp-route-id="@item.id" >
+                                                    <a asp-area="Visitor" asp-controller="Home" asp-action="CategoryProductCollection" asp-route-id="@item.id">
                                                         View More
                                                     </a>
                                                 </div>
