@@ -66,6 +66,10 @@ namespace EcommerceDemo.Controllers
             GROUP By products.product_name
             */
 
+            //var catData = _db.Products.Where(prod => prod.catagory_id == 1).ToList();
+            //var someDate = catData.GroupJoin(_db.Reviews, prod => prod.id, rev => rev.product_id, (prod, rev) => new { 
+            //    prod, rev
+            //}).GroupBy(r => r.prod.)
             List<int> newProd  = new List<int>();
             foreach (var item in prod)
             {

@@ -107,6 +107,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
                 var data = _db.ProductCatagories.Find(id);
+                //var data = _db.ProductCatagories.Where(prod => prod.id == id).FirstOrDefault();
                 System.Diagnostics.Debug.WriteLine("........................" + id);
                 CategoryCreateView category = new CategoryCreateView();
                 category.id = data.id;
