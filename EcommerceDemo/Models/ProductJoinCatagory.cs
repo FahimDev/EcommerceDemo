@@ -17,9 +17,9 @@ namespace EcommerceDemo.Models
         public String packing_type { get; set; }
         public String product_material { get; set; }
         public String product_brand { get; set; }
-        public String product_price { get; set; }
-        public String produc_sell { get; set; }
-        public String minimum_order { get; set; }
+        public int product_price { get; set; }
+        public int produc_sell { get; set; }
+        public int minimum_order { get; set; }
 
         //---------------------------------------
         public float small { get; set; }

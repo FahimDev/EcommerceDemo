@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using EcommerceDemo.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Web;
 
 namespace EcommerceDemo.Controllers
 {
@@ -75,36 +76,50 @@ namespace EcommerceDemo.Controllers
 
             var prod = _db.Products.Where(p => p.catagory_id == id).ToList();
 
-            //var viewProdList = _db.Products.Join( _db.Reviews, product => product.id, productReview => productReview.product_id , (product, productReview) => new { product_name = product.product_name , product_categoryID = product.catagory_id , review = productReview.rating } ).Where(product => product.product_categoryID == id).ToList();
+            var products = _db.Products.Where(p => p.catagory_id == id).ToList();
 
-            //var prodAvgRating = _db.Reviews.GroupBy(g => g.product_id).Select( g => new { product_rating = g.Average(i => i.rating)}).ToList();
+            List<ViewProductsByCat> viewContent = new List<ViewProductsByCat>();
 
-            //var prodList = _db.Products.Join(_db.Reviews, product => product.id, prodReview => prodReview.product_id, (product, prodReview))
-            //var demo = _db.Database.ExecuteSqlCommand("SELECT products.product_name, AVG(reviews.rating) FROM products, ProductCatagories, reviews WHERE products.catagory_id = ProductCatagories.id AND reviews.product_id = products.id AND ProductCatagories.id = 1 GROUP By products.product_name", IEnumerable<ProductByCategory> );
-            /*
-            SELECT products.product_name, AVG(reviews.rating) FROM products, product_category, reviews WHERE 
-            products.category_id = product_category.id AND reviews.product_id = products.id AND product_category.id = 1 
-            GROUP By products.product_name
-            */
-
-            //var catData = _db.Products.Where(prod => prod.catagory_id == 1).ToList();
-            //var someDate = catData.GroupJoin(_db.Reviews, prod => prod.id, rev => rev.product_id, (prod, rev) => new { 
-            //    prod, rev
-            //}).GroupBy(r => r.prod.)
-            List<int> newProd  = new List<int>();
-            foreach (var item in prod)
+            foreach (var item in products)
             {
+                var reviews = _db.Reviews.Where(r => r.product_id == item.id).ToList();
+                
+
+                bool newProdTemp;
+
                 if ((DateTime.Now - item.created_at).Days <= 30)
                 {
-                    newProd.Add(item.id);
+                    newProdTemp = true;
                 }
+                else
+                {
+                    newProdTemp = false;
+                }
+                ViewProductsByCat viewAsset = new ViewProductsByCat
+                {
+                    prodId = item.id,
+                    prodName = item.product_name,
+                    rating = reviews.Average(rev => rev.rating),
+                    price = item.product_price,
+
+                    prodImage = item.product_img,
+
+                    best = false,
+                    hot = false,
+                    sale = item.product_sell,
+                    newProd = newProdTemp,
+
+                };
+
+                viewContent.Add(viewAsset);
             }
-                        
-            //System.Diagnostics.Debug.WriteLine(demo);
 
-            //ProductByCategory prodByCat = new ProductByCategory();
 
-            return View();
+            //var json = new JavaScriptSerializer().Serialize(viewContent);
+            System.Diagnostics.Debug.WriteLine("--------------------->>>>>"+viewContent[1].rating);
+
+
+                return View(viewContent);
         }
 
         public IActionResult Details(int id)

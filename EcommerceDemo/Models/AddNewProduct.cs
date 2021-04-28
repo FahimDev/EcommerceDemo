@@ -39,13 +39,13 @@ namespace EcommerceDemo.Models
         public String product_color { get; set; }
         [Required]
         [Display(Name = "Minimum order level")]
-        public String minimum_order { get; set; }
+        public int minimum_order { get; set; }
         [Required]
         [Display(Name = "Product Sale")]
-        public String product_sell { get; set; }
+        public int product_sell { get; set; }
         [Required]
         [Display(Name = "Product Price")]
-        public String product_price { get; set; }
+        public int product_price { get; set; }
         [Required]
         [Display(Name = "Product Image [1]")]
         public String h_image_one { get; set; }

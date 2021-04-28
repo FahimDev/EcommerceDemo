@@ -21,9 +21,9 @@ namespace EcommerceDemo.Models
         public String product_material { get; set; }
         public String product_brand { get; set; }
         public String product_color { get; set; }
-        public String minimum_order { get; set; }
-        public String product_sell { get; set; }
-        public String product_price { get; set; }
+        public int minimum_order { get; set; }
+        public int product_sell { get; set; }
+        public int product_price { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
 

@@ -103,14 +103,14 @@
                                         <h1 itemprop="name" class="title">@Model.product_name</h1> <span class="spr-badge-caption">@Model.catagory_name</span>
                                         <div class="rating-content">
                                             <div class="rating-description">
-                                                <span class="spr-badge" data-rating="5.0">
+                                                <span class="spr-badge" data-rating="@Model.rating">
                                                     
                                                     <span class="spr-starrating spr-badge-starrating">
-                                                        @for (int j = 0; j<= Model.rating; j++)
+                                                        @for (int j = 1; j<= Model.rating; j++)
                                                         {
                                                             <i class="spr-icon spr-icon-star" style=""></i>
                                                         }
-                                                                                                    </span><span class="spr-badge-caption">@Model.reviewers review</span>
+                                                    </span><span class="spr-badge-caption">@Model.reviewers review</span>
                                                 </span>
                                                 <span class="review-link"><a href="#review">Write a review</a></span>
                                             </div>
