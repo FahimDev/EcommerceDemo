@@ -4,14 +4,16 @@ using EcommerceDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceDemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210429200833_updateToCustomerTable")]
+    partial class updateToCustomerTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,57 +52,6 @@ namespace EcommerceDemo.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("EcommerceDemo.Models.Customers", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("area")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("city")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("company_id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("contact")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("full_name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("login_id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("social_media_link")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("state")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("updated_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("zip")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("EcommerceDemo.Models.Discounts", b =>

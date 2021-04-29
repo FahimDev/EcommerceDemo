@@ -246,7 +246,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="account-item-title">
-                                                                        <a href="#account-register" data-toggle="tab">
+                                                                        <a asp-area="Visitor" asp-controller="Home" asp-action="Registration" data-toggle="tab">
                                                                             Register
                                                                         </a>
                                                                     </li>
@@ -264,6 +264,7 @@
                                                                             <div class="action_bottom">
                                                                                 <button class="_btn" asp-area="Admin" asp-controller="DryDock" asp-action="Login" type="submit">Login</button>
                                                                                 <a href=""><span class="red"></span> Forgot your password?</a>
+                                                                                <a asp-area="Visitor" asp-controller="Home" asp-action="Registration"><span class="red"></span> Don't have an account? <span class="text-primary">Create Account</span>.</a>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -412,7 +413,7 @@
                                                                             </a>
                                                                         </li>
                                                                         <li class="account-item-title">
-                                                                            <a href="#account-register-mobile" data-toggle="tab">
+                                                                            <a asp-area="Visitor" asp-controller="Home" asp-action="Registration" data-toggle="tab">
                                                                                 Register
                                                                             </a>
                                                                         </li>
@@ -430,6 +431,7 @@
                                                                                 <div class="action_bottom">
                                                                                     <button class="_btn" asp-area="Admin" asp-controller="DryDock" asp-action="Login" type="submit">Login</button>
                                                                                     <a href="./login-recover.html"><span class="red"></span> Forgot your password?</a>
+                                                                                    <a asp-area="Visitor" asp-controller="Home" asp-action="Registration"><span class="red"></span> Don't have an account? <span class="text-primary">Create Account</span>.</a>
                                                                                 </div>
                                                                             </form>
                                                                         </div>

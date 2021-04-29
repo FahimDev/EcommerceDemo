@@ -48,5 +48,7 @@ namespace EcommerceDemo.Data
 
 
         public DbSet<Discounts> Discounts { get; set; }
+
+        public DbSet<Customers> Customers { get; set; }
     }
 }

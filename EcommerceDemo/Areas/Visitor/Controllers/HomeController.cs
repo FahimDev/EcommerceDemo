@@ -10,6 +10,7 @@ using EcommerceDemo.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Web;
+using System.Web.Helpers;
 
 namespace EcommerceDemo.Controllers
 {
@@ -63,7 +64,7 @@ namespace EcommerceDemo.Controllers
                 showCat.Add(sc);
             }
 
-            System.Diagnostics.Debug.WriteLine(getAllCat[0].name);
+            //System.Diagnostics.Debug.WriteLine(getAllCat[0].name);
 
             return View(showCat);
         }
@@ -209,6 +210,51 @@ namespace EcommerceDemo.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Registration()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Registration(CustomerRegistration request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            String salt = Crypto.GenerateSalt();
+            String password = request.password + salt;
+            String hashPass = Crypto.HashPassword(password);
+
+            Logins loginObj = new Logins();
+
+            loginObj.username = request.username;
+            loginObj.password = hashPass;
+            loginObj.token = salt;
+            loginObj.role_id = 4;
+            loginObj.created_at = DateTime.Now;
+
+            var insertLogin = _db.Logins.Add(loginObj);
+            _db.SaveChanges();
+
+            Customers customerObj = new Customers();
+            customerObj.login_id = insertLogin.Entity.id;
+            customerObj.created_at = DateTime.Now;
+            customerObj.full_name = request.full_name;
+            customerObj.contact = request.contact;
+            customerObj.email = request.email;
+            customerObj.area = request.area;
+            customerObj.city = request.city;
+            customerObj.zip = request.zip;
+            customerObj.social_media_link = request.social_media_link;
+            _db.Customers.Add(customerObj);
+            _db.SaveChanges();
+
+            TempData["action"] = "Registration Successful";
+
+            return View();
         }
     }
 }
