@@ -28,9 +28,17 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         }
 
         public IActionResult Index()
-        {
-            var categories = _db.ProductCatagories.ToList();
-            return View(categories);
+        {         
+            if (HttpContext.Session.GetInt32("roleIdSession") == 1)
+            {
+                var categories = _db.ProductCatagories.ToList();
+                return View(categories);
+            }
+            else
+            {
+                TempData["login_alert"] = "Please, login!";
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            }
         }
 
         public IActionResult Create()
@@ -41,6 +49,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }
@@ -93,15 +102,19 @@ namespace EcommerceDemo.Areas.Admin.Controllers
                 var insertCat = _db.ProductCatagories.Add(prodCat);
                 _db.SaveChanges();
 
+                TempData["action"] = "Category created";
 
                 return View();
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
+
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
 
         }
+
         public IActionResult Update(int id)
         {
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
@@ -122,6 +135,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }
@@ -162,6 +176,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }

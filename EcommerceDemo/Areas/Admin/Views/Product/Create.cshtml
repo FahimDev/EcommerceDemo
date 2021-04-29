@@ -31,7 +31,7 @@
                                 <div class="card-body">
                                     <label for="company" class=" form-control-label">Select Product Category</label>
                                     <select name="category_id" id="category" data-placeholder="Choose a Category..." class="standardSelect" tabindex="1">
-                                        <option >Select Category</option>
+                                        <option>Select Category</option>
                                         @foreach (var item in TempData["Category"] as IEnumerable<ProductCatagories>)
                                         {
                                             <option id="@item.unit" value="@item.id">@item.catagory_name</option>
@@ -245,7 +245,7 @@
                             reader.onloadend = function () {
                                 var base64data = reader.result;
                                 //let file = new File([base64data], "name.png");
-                                $("#"+idName).val(base64data.toString());
+                                $("#" + idName).val(base64data.toString());
                                 //console.log($("#imageblob").val())
                                 bs_modal.modal("hide");
                             };
@@ -253,5 +253,16 @@
                     };
                 });
             });
+        </script>
+
+        <script type="text/javascript">
+
+        $(function () {
+            var noti = '@TempData["action"]';
+            if (noti.length > 0) {
+                alertify.success(noti);
+            }
+        })
+
         </script>
     }

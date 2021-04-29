@@ -28,6 +28,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }
@@ -45,6 +46,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
             
@@ -55,72 +57,98 @@ namespace EcommerceDemo.Areas.Admin.Controllers
         //[ActionName("registrationForm")]
         public IActionResult Registration(AdminRegistration admin)
         {
-            var roles = _db.EmpRoles.ToList();
-            
-            TempData["Roles"] = roles;
 
-            if (!ModelState.IsValid)
+            if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
-                return View();
+
+                var roles = _db.EmpRoles.ToList();
+
+                TempData["Roles"] = roles;
+
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+
+                //PM> Install-Package microsoft-web-helpers
+                String salt = Crypto.GenerateSalt();
+                String password = admin.password + salt;
+                String hashPass = Crypto.HashPassword(password);
+
+                Logins logins = new Logins();
+                logins.role_id = 1;
+                logins.username = admin.username;
+                logins.password = hashPass;
+                logins.token = salt;
+                logins.created_at = DateTime.Now;
+
+                var isVerified = Crypto.VerifyHashedPassword(hashPass, admin.password + salt);
+                System.Diagnostics.Debug.WriteLine("================================>" + isVerified);
+
+
+
+                var insertLogin = _db.Logins.Add(logins);
+                _db.SaveChanges();
+                //System.Diagnostics.Debug.WriteLine(insertLogin.Entity.id);
+
+                //-------------------------------
+
+                Admins admins = new Admins();
+                admins.login_id = insertLogin.Entity.id;
+                admins.created_at = DateTime.Now;
+                admins.full_name = admin.full_name;
+                admins.contact = admin.contact;
+                admins.email = admin.email;
+                admins.location = admin.location;
+
+                var insertReg = _db.Admins.Add(admins);
+                _db.SaveChanges();
+                //-------------------------------
+
+                return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
+            }
+            else
+            {
+                TempData["login_alert"] = "Please, login!";
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
 
-            //PM> Install-Package microsoft-web-helpers
-            String salt = Crypto.GenerateSalt();
-            String password = admin.password + salt;
-            String hashPass = Crypto.HashPassword(password);
-
-            Logins logins = new Logins();
-            logins.role_id = 1;
-            logins.username = admin.username;
-            logins.password = hashPass;
-            logins.token = salt;
-            logins.created_at = DateTime.Now;
-
-            var isVerified = Crypto.VerifyHashedPassword(hashPass, admin.password + salt);
-            System.Diagnostics.Debug.WriteLine("================================>" + isVerified);
-
-
-
-            var insertLogin = _db.Logins.Add(logins);
-            _db.SaveChanges();
-            //System.Diagnostics.Debug.WriteLine(insertLogin.Entity.id);
-
-            //-------------------------------
-
-            Admins admins = new Admins();
-            admins.login_id = insertLogin.Entity.id;
-            admins.created_at = DateTime.Now;
-            admins.full_name = admin.full_name;
-            admins.contact = admin.contact;
-            admins.email = admin.email;
-            admins.location = admin.location;
-
-            var insertReg = _db.Admins.Add(admins);
-            _db.SaveChanges();
-            //-------------------------------
-
-            return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
         }
 
         [HttpPost]
         public IActionResult Login(Login login)
         {
-            
+
             var loginData = _db.Logins.Where(user => user.username == login.username).FirstOrDefault();
+
+            if (loginData == null)
+            {
+                TempData["login_alert"] = "User not found!";
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            }
 
             String hashPass = loginData.password;
             String salt = loginData.token;
 
             var isVerified = Crypto.VerifyHashedPassword(hashPass, login.password + salt);
-            System.Diagnostics.Debug.WriteLine("================================>" + isVerified);
 
-            HttpContext.Session.SetString("userSession", loginData.username );
-            HttpContext.Session.SetInt32("logIdSession", loginData.id);
-            HttpContext.Session.SetInt32("roleIdSession", loginData.role_id);
+            if (isVerified)
+            {
+                System.Diagnostics.Debug.WriteLine("================================>" + isVerified);
 
-            HttpContext.Session.GetString("userSession");
+                HttpContext.Session.SetString("userSession", loginData.username);
+                HttpContext.Session.SetInt32("logIdSession", loginData.id);
+                HttpContext.Session.SetInt32("roleIdSession", loginData.role_id);
 
-            return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
+                HttpContext.Session.GetString("userSession");
+
+                return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
+            }
+            else
+            {
+                TempData["login_alert"] = "Wrong Password!";
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            }           
         }
 
     }

@@ -2,6 +2,9 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "AlertifyJS/1.13.1": {
+        "type": "package"
+      },
       "microsoft-web-helpers/2.1.20710.2": {
         "type": "package",
         "dependencies": {
@@ -2825,6 +2828,35 @@
     }
   },
   "libraries": {
+    "AlertifyJS/1.13.1": {
+      "sha512": "lJyjcEN++TZP+U1jpNSMEBCI53hsNvexvAEOwo2+W4BjRAq81ElX0cRCgbfHPMKGauvXVPvlo6aAio4tJumy7w==",
+      "type": "package",
+      "path": "alertifyjs/1.13.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "alertifyjs.1.13.1.nupkg.sha512",
+        "alertifyjs.nuspec",
+        "content/Content/alertifyjs/alertify.css",
+        "content/Content/alertifyjs/alertify.min.css",
+        "content/Content/alertifyjs/alertify.rtl.css",
+        "content/Content/alertifyjs/alertify.rtl.min.css",
+        "content/Content/alertifyjs/themes/bootstrap.css",
+        "content/Content/alertifyjs/themes/bootstrap.min.css",
+        "content/Content/alertifyjs/themes/bootstrap.rtl.css",
+        "content/Content/alertifyjs/themes/bootstrap.rtl.min.css",
+        "content/Content/alertifyjs/themes/default.css",
+        "content/Content/alertifyjs/themes/default.min.css",
+        "content/Content/alertifyjs/themes/default.rtl.css",
+        "content/Content/alertifyjs/themes/default.rtl.min.css",
+        "content/Content/alertifyjs/themes/semantic.css",
+        "content/Content/alertifyjs/themes/semantic.min.css",
+        "content/Content/alertifyjs/themes/semantic.rtl.css",
+        "content/Content/alertifyjs/themes/semantic.rtl.min.css",
+        "content/Scripts/alertify.js",
+        "content/Scripts/alertify.min.js"
+      ]
+    },
     "microsoft-web-helpers/2.1.20710.2": {
       "sha512": "vzUNqlz+dVoN0WsAPBtiqYNEMsg6kRYYIGlNsWcmnASIQkpeCCEYcXPIUNk2j2dbor4RC2niFwAPHtt7zLwqnQ==",
       "type": "package",
@@ -9098,6 +9130,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "AlertifyJS >= 1.13.1",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.12",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.12",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.12",
@@ -9152,6 +9185,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "AlertifyJS": {
+            "target": "Package",
+            "version": "[1.13.1, )"
+          },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
             "version": "[3.1.12, )"

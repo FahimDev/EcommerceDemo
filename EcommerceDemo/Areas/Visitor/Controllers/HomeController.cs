@@ -83,7 +83,17 @@ namespace EcommerceDemo.Controllers
             foreach (var item in products)
             {
                 var reviews = _db.Reviews.Where(r => r.product_id == item.id).ToList();
-                
+
+                float tempRev = 0;
+
+                if (reviews != null)
+                {
+                    tempRev = reviews.Average(rev => rev.rating);
+                }
+                else
+                {
+                    tempRev = 0;
+                }
 
                 bool newProdTemp;
 
@@ -99,7 +109,7 @@ namespace EcommerceDemo.Controllers
                 {
                     prodId = item.id,
                     prodName = item.product_name,
-                    rating = reviews.Average(rev => rev.rating),
+                    rating = tempRev,
                     price = item.product_price,
 
                     prodImage = item.product_img,

@@ -101,7 +101,7 @@
                         <h2 class="page-title">Biryani is Love!</h2>
                         <div class="home-welcome-content">
                             <span class="welcome-caption">
-                                Biryani is a mixed rice dish originating among the Bangalis. It is made with spices, rice, and meat, and sometimes, 
+                                Biryani is a mixed rice dish originating among the Bangalis. It is made with spices, rice, and meat, and sometimes,
                                 in addition, eggs and/or vegetables. Biryani is popular throughout the Bangladesh, as well as among its diaspora.
                             </span>
                             <img class="welcome-banner" src="~/assets/webImages/popup-foodCover.png" alt="" title="">
@@ -127,6 +127,7 @@
                             <script>
                                 $(document).ready(function () {
                                     $("#quickview").click(function () {
+
                                         let node = document.getElementById("prodName");
                                         let prodName = node.textContent;
                                         let prodDes = $("#prodDescription").val();
@@ -139,6 +140,7 @@
                                         $("#prod_desc").html(prodDes);
                                         $("#prod-img").attr('src', prodImg);
                                         $("#prod-cost").text(prodPrice);
+
                                     });
                                 });
                             </script>
@@ -148,9 +150,9 @@
                                 <div class="content_product col-sm-3 not-animated" data-animate="fadeInUp" data-delay="100">
                                     <div class="row-container product list-unstyled clearfix product-circle">
                                         <div class="row-left">
-                                            <a href="./product.html" class="hoverBorder container_item">
+                                            <a asp-area="Visitor" asp-controller="Home" asp-action="Details" asp-route-id="@item.id"  class="hoverBorder container_item">
                                                 <div class="hoverBorderWrapper">
-                                                    <img id="prodImg" src="~/assets/prod/@item.product_img" class="img-responsive front" alt="Juice Ice Tea">
+                                                    <img id="prodImg" src="~/assets/prod/@item.product_img" class="img-responsive front" alt="@item.product_img">
                                                     <div class="mask"></div>
                                                 </div>
                                             </a>
@@ -160,18 +162,18 @@
                                                         <div class="group-actionbutton">
                                                             <ul class="quickview-wishlist-wrapper">
                                                                 <li class="wishlist">
-                                                                    <a title="Add To Wishlist" class="wishlist wishlist-juice-ice-tea" data-wishlisthandle="juice-ice-tea"><span class="cs-icon icon-heart"></span></a>
+                                                                    <a title="Add To Wishlist" class="wishlist wishlist-@item.product_name" data-wishlisthandle="@item.product_name"><span class="cs-icon icon-heart"></span></a>
                                                                 </li>
                                                                 <li class="quickview hidden-xs hidden-sm">
                                                                     <div id="quickview" class="product-ajax-cart">
                                                                         <span class="overlay_mask"></span>
-                                                                        <div data-handle="juice-ice-tea" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
+                                                                        <div data-handle="@item.product_name" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
                                                                             <a class=""><span class="cs-icon icon-eye"></span></a>
                                                                         </div>
                                                                     </div>
                                                                 </li>
                                                                 <li class="compare">
-                                                                    <a title="Add To Compare" class="compare compare-juice-ice-tea" data-comparehandle="juice-ice-tea"><span class="cs-icon icon-retweet2"></span></a>
+                                                                    <a title="Add To Compare" class="compare compare-@item.product_name" data-comparehandle="@item.product_name"><span class="cs-icon icon-retweet2"></span></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -237,185 +239,7 @@
                                 </div>
                             }
                             <!--End: Product Body-->
-                            <div class="content_product col-sm-3 not-animated" data-animate="fadeInUp" data-delay="200">
-                                <div class="row-container product list-unstyled clearfix product-circle">
-                                    <div class="row-left">
-                                        <a href="./product.html" class="hoverBorder container_item">
-                                            <div class="hoverBorderWrapper">
-                                                <img src="~/assets/images/800x800.png" class="img-responsive front" alt="Coke">
-                                                <div class="mask"></div>
-                                            </div>
-                                        </a>
-                                        <div class="hover-mask">
-                                            <div class="group-mask">
-                                                <div class="inner-mask">
-                                                    <div class="group-actionbutton">
-                                                        <ul class="quickview-wishlist-wrapper">
-                                                            <li class="wishlist">
-                                                                <a title="Add To Wishlist" class="wishlist wishlist-coke" data-wishlisthandle="coke"><span class="cs-icon icon-heart"></span></a>
-                                                            </li>
-                                                            <li class="quickview hidden-xs hidden-sm">
-                                                                <div class="product-ajax-cart">
-                                                                    <span class="overlay_mask"></span>
-                                                                    <div data-handle="coke" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-                                                                        <a class=""><span class="cs-icon icon-eye"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="compare">
-                                                                <a title="Add To Compare" class="compare compare-coke" data-comparehandle="coke"><span class="cs-icon icon-retweet2"></span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <form action="./cart.html" method="post">
-                                                        <div class="effect-ajax-cart">
-                                                            <button class="_btn select-option" type="button" onclick="window.location='./product.html';" title="Select Option">Select options</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <!--inner-mask-->
-                                            </div>
-                                            <!--Group mask-->
-                                        </div>
-                                        <div class="product-label">
-                                            <div class="label-element deal-label">
-                                                <span>33%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row-right animMix">
-                                        <div class="rating-star">
-                                            <span class="spr-badge" data-rating="5.0">
-                                                <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i></span><span class="spr-badge-caption">1 review</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-title"><a class="title-5" href="./product.html">Coke</a></div>
-                                        <div class="product-price">
-                                            <span class="price_sale"><span class="money" data-currency-usd="$10.00">$10.00</span></span>
-                                            <del class="price_compare"> <span class="money" data-currency-usd="$15.00">$15.00</span></del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content_product col-sm-3 not-animated" data-animate="fadeInUp" data-delay="300">
-                                <div class="row-container product list-unstyled clearfix product-circle">
-                                    <div class="row-left">
-                                        <a href="./product.html" class="hoverBorder container_item">
-                                            <div class="hoverBorderWrapper">
-                                                <img src="~/assets/images/800x800.png" class="img-responsive front" alt="Juice Ice Tea">
-                                                <div class="mask"></div>
-                                            </div>
-                                        </a>
-                                        <div class="hover-mask">
-                                            <div class="group-mask">
-                                                <div class="inner-mask">
-                                                    <div class="group-actionbutton">
-                                                        <ul class="quickview-wishlist-wrapper">
-                                                            <li class="wishlist">
-                                                                <a title="Add To Wishlist" class="wishlist wishlist-juice-ice-tea" data-wishlisthandle="juice-ice-tea"><span class="cs-icon icon-heart"></span></a>
-                                                            </li>
-                                                            <li class="quickview hidden-xs hidden-sm">
-                                                                <div class="product-ajax-cart">
-                                                                    <span class="overlay_mask"></span>
-                                                                    <div data-handle="juice-ice-tea" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-                                                                        <a class=""><span class="cs-icon icon-eye"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="compare">
-                                                                <a title="Add To Compare" class="compare compare-juice-ice-tea" data-comparehandle="juice-ice-tea"><span class="cs-icon icon-retweet2"></span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <form action="./cart.html" method="post">
-                                                        <div class="effect-ajax-cart">
-                                                            <input type="hidden" name="quantity" value="1">
-                                                            <button class="_btn add-to-cart" data-parent=".parent-fly" type="submit" name="add" title="Add To Cart">Add to cart</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <!--inner-mask-->
-                                            </div>
-                                            <!--Group mask-->
-                                        </div>
-                                        <div class="product-label">
-                                            <div class="label-element hotting-label">
-                                                <span>Hot</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row-right animMix">
-                                        <div class="rating-star">
-                                            <span class="spr-badge" data-rating="0.0">
-                                                <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span><span class="spr-badge-caption">No reviews</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-title"><a class="title-5" href="./product.html">Juice Ice Tea</a></div>
-                                        <div class="product-price">
-                                            <span class="price">
-                                                <span class="money" data-currency-usd="$20.00">$20.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content_product col-sm-3 not-animated" data-animate="fadeInUp" data-delay="400">
-                                <div class="row-container product list-unstyled clearfix product-circle">
-                                    <div class="row-left">
-                                        <a href="./product.html" class="hoverBorder container_item">
-                                            <div class="hoverBorderWrapper">
-                                                <img src="~/assets/images/800x800.png" class="img-responsive front" alt="Juice Ice Tea">
-                                                <div class="mask"></div>
-                                            </div>
-                                        </a>
-                                        <div class="hover-mask">
-                                            <div class="group-mask">
-                                                <div class="inner-mask">
-                                                    <div class="group-actionbutton">
-                                                        <ul class="quickview-wishlist-wrapper">
-                                                            <li class="wishlist">
-                                                                <a title="Add To Wishlist" class="wishlist wishlist-juice-ice-tea" data-wishlisthandle="juice-ice-tea"><span class="cs-icon icon-heart"></span></a>
-                                                            </li>
-                                                            <li class="quickview hidden-xs hidden-sm">
-                                                                <div class="product-ajax-cart">
-                                                                    <span class="overlay_mask"></span>
-                                                                    <div data-handle="juice-ice-tea" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
-                                                                        <a class=""><span class="cs-icon icon-eye"></span></a>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="compare">
-                                                                <a title="Add To Compare" class="compare compare-juice-ice-tea" data-comparehandle="juice-ice-tea"><span class="cs-icon icon-retweet2"></span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <form action="./cart.html" method="post">
-                                                        <div class="effect-ajax-cart">
-                                                            <input type="hidden" name="quantity" value="1">
-                                                            <button class="_btn add-to-cart" data-parent=".parent-fly" type="submit" name="add" title="Add To Cart">Add to cart</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <!--inner-mask-->
-                                            </div>
-                                            <!--Group mask-->
-                                        </div>
-                                    </div>
-                                    <div class="row-right animMix">
-                                        <div class="rating-star">
-                                            <span class="spr-badge" data-rating="0.0">
-                                                <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i><i class="spr-icon spr-icon-star-empty" style=""></i></span><span class="spr-badge-caption">No reviews</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-title"><a class="title-5" href="./product.html">Juice Ice Tea</a></div>
-                                        <div class="product-price">
-                                            <span class="price">
-                                                <span class="money" data-currency-usd="$20.00">$20.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -1616,3 +1440,15 @@
     </ul>
 </div>
 
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            var noti = '@TempData["login_alert"]';
+            if (noti.length > 0) {
+                alertify.error(noti);
+            }
+        })
+
+    </script> 
+}

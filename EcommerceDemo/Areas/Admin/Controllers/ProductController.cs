@@ -31,7 +31,15 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(_db.Products.ToList());
+            if (HttpContext.Session.GetInt32("roleIdSession") == 1)
+            {
+                return View(_db.Products.ToList());
+            }
+            else
+            {
+                TempData["login_alert"] = "Please, login!";
+                return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+            }               
         }
 
         public IActionResult Create()
@@ -57,6 +65,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }
@@ -170,10 +179,13 @@ namespace EcommerceDemo.Areas.Admin.Controllers
                 System.Diagnostics.Debug.WriteLine("Insert Product Images Table================================>" + insertProdImage);
                 _db.SaveChanges();
 
+                TempData["action"] = "Product added";
+
                 return View();
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }
@@ -212,6 +224,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }
@@ -319,6 +332,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
             else
             {
+                TempData["login_alert"] = "Please, login!";
                 return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
             }
         }

@@ -68,7 +68,7 @@
                                     <label for="displayImage" class=" form-control-label">Category Display Image</label><input type="text" placeholder="380X200 (px)" disabled>
                                     <input type="file" id="m-image" name="category_image" asp-for="category_image" class="form-control-file">
                                 </div>
-                                <input type="hidden" asp-for="imageblob" name="imageblob" id="imageblob"/>
+                                <input type="hidden" asp-for="imageblob" name="imageblob" id="imageblob" />
                                 <div class="form-group">
                                     <input asp-area="Admin" asp-controller="Category" asp-action="Create" class="btn btn-success btn-lg btn-block" type="submit" value="Create">
                                 </div>
@@ -166,7 +166,7 @@
                     viewMode: 3,
                     preview: ".preview",
                     dragMode: "none",
-                    cropBoxResizable: false,                 
+                    cropBoxResizable: false,
                 });
             })
             .on("hidden.bs.modal", function () {
@@ -176,36 +176,47 @@
 
         $("#crop").click(function () {
             canvas = cropper.getCroppedCanvas({
-              width: 160,
-              height: 160,
+                width: 160,
+                height: 160,
             });
 
             canvas.toBlob(function (blob) {
-              url = URL.createObjectURL(blob);
-              var reader = new FileReader();
-              reader.readAsDataURL(blob);
-              reader.onloadend = function () {
-                var base64data = reader.result;
+                url = URL.createObjectURL(blob);
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function () {
+                    var base64data = reader.result;
 
-                canvas = cropper.getCroppedCanvas({
-                    width: 380,
-                    height: 200,
-                });
-                 
-                canvas.toBlob(function (blob) {
-                    url = URL.createObjectURL(blob);
-                    var reader = new FileReader();
-                    reader.readAsDataURL(blob);
-                    reader.onloadend = function () {
-                        var base64data = reader.result;
-                        //let file = new File([base64data], "name.png");
-                        $("#imageblob").val(base64data.toString());
-                        console.log($("#imageblob").val())
-                        bs_modal.modal("hide");
-                    };
-                });
-              };
+                    canvas = cropper.getCroppedCanvas({
+                        width: 380,
+                        height: 200,
+                    });
+
+                    canvas.toBlob(function (blob) {
+                        url = URL.createObjectURL(blob);
+                        var reader = new FileReader();
+                        reader.readAsDataURL(blob);
+                        reader.onloadend = function () {
+                            var base64data = reader.result;
+                            //let file = new File([base64data], "name.png");
+                            $("#imageblob").val(base64data.toString());
+                            console.log($("#imageblob").val())
+                            bs_modal.modal("hide");
+                        };
+                    });
+                };
             });
-          });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            var noti = '@TempData["action"]';
+            if (noti.length > 0) {
+                alertify.success(noti);
+            }
+        })
+
     </script>
 }

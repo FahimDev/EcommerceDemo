@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "02L7j4402IJEeUZSnzM25JD6Zpx5iChnzSr5whaakxF6u1V3yBv0MYqYp6B6byjHQCOMWiy25OFnnPZTF6TXiw==",
+  "dgSpecHash": "PK9RyxUqaaP2n36mzSeT+djQlD7dzPtn4JZ3rj2hd5lwxv1s/pVGgNEKV0b3m5M55rj0n1rLBLILiSwdcL5ofQ==",
   "success": true,
   "projectFilePath": "C:\\C# Zone\\ASP.NET Core\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo\\EcommerceDemo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\alertifyjs\\1.13.1\\alertifyjs.1.13.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft-web-helpers\\2.1.20710.2\\microsoft-web-helpers.2.1.20710.2.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnet.razor\\2.0.20505\\microsoft.aspnet.razor.2.0.20505.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnet.webpages\\2.0.20505\\microsoft.aspnet.webpages.2.0.20505.nupkg.sha512",
