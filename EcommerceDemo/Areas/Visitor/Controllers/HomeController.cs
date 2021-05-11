@@ -198,10 +198,8 @@ namespace EcommerceDemo.Controllers
             productDetails.rating = sum;
             productDetails.reviewers = ratings.Count;
 
-
-
             //System.Diagnostics.Debug.WriteLine("--------------------->" + ratings[0].review_body);
-            System.Diagnostics.Debug.WriteLine("--------------------->" + HttpContext.Session.GetString("userSession"));
+            //System.Diagnostics.Debug.WriteLine("--------------------->" + HttpContext.Session.GetString("userSession"));
            
             return View(productDetails);
         }
