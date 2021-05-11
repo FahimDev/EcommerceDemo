@@ -142,7 +142,23 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
                 HttpContext.Session.GetString("userSession");
 
-                return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
+                if (loginData.role_id == 4)
+                {
+
+                    return RedirectToRoute(new { action = "Index", controller = "Home", area = "Customer" });
+
+                }
+                else if (loginData.role_id == 1)
+                {
+
+                    return RedirectToRoute(new { action = "Index", controller = "DryDock", area = "Admin" });
+
+                }
+                else
+                {
+                    TempData["login_alert"] = "Wrong Password!";
+                    return RedirectToRoute(new { action = "Index", controller = "Home", area = "Visitor" });
+                }
             }
             else
             {
