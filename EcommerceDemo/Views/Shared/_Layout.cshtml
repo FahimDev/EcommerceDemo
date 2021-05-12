@@ -172,7 +172,8 @@
                                             </div>
                                             <div class="icon_cart">
                                                 <div class="m_cart-group">
-                                                    <a class="cart dropdown-toggle dropdown-link" data-toggle="dropdown">
+                                                    <a class="cart dropdown-link" id="cart-button">
+                                                        <!--data-toggle="dropdown"-->
                                                         <i class="sub-dropdown1 visible-sm visible-md visible-lg"></i>
                                                         <i class="sub-dropdown visible-sm visible-md visible-lg"></i>
                                                         <div class="num-items-in-cart">
@@ -180,13 +181,13 @@
                                                                 <div class="num-items-in-cart">
                                                                     <i class="fa fa-shopping-cart"></i>
                                                                     <span class="cart_text">
-                                                                        Cart <span class="number">(2)</span>
+                                                                        Cart <span id="cart-count" class="number">0</span>
                                                                     </span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    <div class="dropdown-menu cart-info">
+                                                    <div id="cart-infos" class="dropdown-menu cart-info">
                                                         <div class="cart-content">
                                                             <div class="text-items"><span>2 item(s) in the shopping cart</span> <span class="cs-icon icon-close close-dropdown"></span> </div>
                                                             <div class="items control-container">
@@ -770,6 +771,40 @@
             </section>
         </div>
     </footer>
+    <script>
+        $(document).ready(function () {
+            $(".add-to-cart").on('click', (e) => {
+                let prodID = e.currentTarget.id;
+                if (typeof (Storage) !== "undefined") {
+                    if (localStorage.getItem("productIds")) {
+                        let value = localStorage.getItem("productIds");
+                        value = value + "," + prodID;
+                        localStorage.setItem("productIds", value);
+                        let count = value.split(",").length;
+                        $('#cart-count').html(count);
+
+                    } else {
+                        localStorage.setItem("productIds", prodID);
+                        $('#cart-count').html("1");
+                    }
+                } else {
+                    alert("Sorry, your browser does not support Web Storage...");
+                }
+            });
+
+            $("#cart-button").click(() => {
+                let ids = localStorage.getItem("productIds");
+                $.ajax({
+                    url: `/Visitor/Cart/GetProductDetails/1,2`,
+                    type: 'GET',
+                    success: function (result) {
+                        console.log(result);
+                    }
+                });
+                $("#cart-infos").toggle();
+            })
+        });  
+    </script>
     <!--<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>-->
