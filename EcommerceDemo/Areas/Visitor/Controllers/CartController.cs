@@ -22,15 +22,16 @@ namespace EcommerceDemo.Areas.Visitor.Controllers
         public dynamic GetProductDetails(string id)
         {
             System.Diagnostics.Debug.WriteLine("................" + id);
-            string[] somevalue = id.Split(',');
-            List<dynamic> products = new List<dynamic>();
-            foreach (var item in somevalue)
-            {
-                var product = _db.Products.Where(p => p.id == int.Parse(item)).FirstOrDefault();
-                products.Add(product);
-            }
+
+            //string[] somevalue = id.Split(',');
+            //List<dynamic> products = new List<dynamic>();
+            //foreach (var item in somevalue)
+            //{
+            //    var product = _db.Products.Where(p => p.id == int.Parse(item)).FirstOrDefault();
+            //    products.Add(product);
+            //}
             
-            return products;
+            return id;
         }
     }
 }

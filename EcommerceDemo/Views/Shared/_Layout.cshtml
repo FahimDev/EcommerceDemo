@@ -712,82 +712,110 @@
         </div>
     </footer>
     <script>
-        
-        $(document).ready(function () {
 
-            //console.log(localStorage.removeItem("productIds"))
-            if (!localStorage.getItem("productIds")) {
-                $('.cart-count').html('0');
-            } else {
-                let value = localStorage.getItem("productIds");
-                let count = value.split(",").length;
+        $(document).ready(function () {
+            
+            function setCount(value) {
+                let count = localStorage.getItem("count");
+                if (value == 0) count = 0;
+                else if (!value) count = localStorage.getItem("count") ? localStorage.getItem("count") : 0
+                else {
+                    if (count) {
+                        count = parseInt(count);
+                        count += value;
+                    }
+                    else count = 0;
+                }                
+                localStorage.setItem("count", count)                             
                 $('.cart-count').html(count);
             }
 
+            setCount(null);
             $(".add-to-cart").on('click', (e) => {
                 let prodID = e.currentTarget.id;
                 if (typeof (Storage) !== "undefined") {
-                    if (localStorage.getItem("productIds")) {
-                        let value = localStorage.getItem("productIds");
-                        
-                        value = value + "," + prodID;
-                        localStorage.setItem("productIds", value);
-                        let count = value.split(",").length;
-                        $('.cart-count').html(count);
+                    if (localStorage.getItem("products")) {
+                        let products = JSON.parse(localStorage.getItem("products"));                        
+                        let changed = false;
+                        products.some(prod => {
+                            if (prod.id == prodID) {
+                                prod.quantity = parseInt(prod.quantity) + 1;
+                                changed = true;
+                            }
+                            return changed;
+                        })
 
+                        if (!changed) {
+                            products.push({
+                                id: prodID,
+                                quantity: 1
+                            })
+                        }                       
+                        localStorage.setItem("products", JSON.stringify(products));
                     } else {
-                        localStorage.setItem("productIds", prodID);
-                        $('.cart-count').html("1");
+                        let products = [
+                            {
+                                id: prodID,
+                                quantity: 1
+                            }
+                        ];
+                        localStorage.setItem("products", JSON.stringify(products));                        
                     }
+                    setCount(1);
                 } else {
                     alert("Sorry, your browser does not support Web Storage...");
                 }
-            });         
-            $("#cart-button").click(() => {              
-                let ids = localStorage.getItem("productIds");
-                if (ids) {
+            });
+            $("#cart-button").click(() => {
+                let products = localStorage.getItem("products")
+
+
+                if (products) {
                     $.ajax({
-                        url: `/Visitor/Cart/GetProductDetails/${ids}`,
-                        type: 'GET',
+                        url: `/visitor/cart/getproductdetails/${products}`,
+                        type: 'get',
                         success: function (result) {
                             console.log(result);
                             let html = '';
 
-                            result.forEach(prod => {
-                                html += `
-                                <div class="group_cart_item">
-                                    <div class="cart-left"><a class="cart-image" href="./product.html"><img src="/assets/prod/${prod.product_img}" alt="${prod.product_img}" title=""></a></div>
-                                        <div class="cart-right">
-                                            <div class="cart-title"><a href="./product.html">${prod.product_name}</a></div>
-                                            <div class="cart-price"><span class="money" data-currency-bdt="৳${prod.product_price}" data-currency="BDT">৳${prod.product_price}</span></div>
-                                            <div class="cart-qty">
-                                                <span class="quantity">Qty: 1</span>
-                                                <a title="Add To Wishlist" class="wishlist-extra-crispy-1" href="./wish-list.html">
-                                                    <span class="cs-icon icon-heart"></span>
-                                                </a>
-                                                <a class="cart-close" title="Remove" href="javascript:void(0);">
-                                                    <span class="cs-icon icon-bin"></span>
-                                                </a>
-                                             </div>
-                                    </div>
-                                </div>
-                                    `
-                            })
+                            //result.foreach(prod => {
+                            //    html += `
+                            //    <div id="itembody${prod.id}" class="group_cart_item">
+                            //        <div class="cart-left"><a class="cart-image" href="./product.html"><img src="/assets/prod/${prod.product_img}" alt="${prod.product_img}" title=""></a></div>
+                            //            <div class="cart-right">
+                            //                <div class="cart-title"><a href="./product.html">${prod.product_name}</a></div>
+                            //                <div class="cart-price"><span class="money" data-currency-bdt="৳${prod.product_price}" data-currency="bdt">৳${prod.product_price}</span></div>
+                            //                <div class="cart-qty">
+                            //                    <span class="quantity">qty: 1</span>
+                            //                    <a title="add to wishlist" id="${prod.id}" class="wishlist-extra-crispy-1" onclick="" href="#">
+                            //                        <span class="cs-icon icon-heart"></span>
+                            //                    </a>
+                            //                    <a class="cart-close" id="${prod.id}" title="remove" onclick="dosomething();" href="">
+                            //                        <span class="cs-icon icon-bin"></span>
+                            //                    </a>
+                            //                 </div>
+                            //        </div>
+                            //    </div>
+                            //        `
+                            //})
 
-                            console.log(html);
-                            $('.items').html(html);
+                            //console.log(html);
+                            //$('.items').html(html);
 
-                       
+
                         }
-                    });                
-                } 
+                    });
+                }
                 $("#cart-infos").toggle();
             })
-            $(".cart-clear").click(() => {
-                localStorage.removeItem("productIds"); 
+            $(".cart-clear").click(() => {              
+                localStorage.removeItem("products");
+                setCount(0)
                 $('.cart-count').html("0");
-            })          
-        });  
+                let content = '';
+                $('.items').html(content);
+            })
+        });
     </script>
     <!--<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
