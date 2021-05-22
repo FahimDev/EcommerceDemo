@@ -730,7 +730,64 @@
                 $('.cart-count').html(count);
             }
 
+            function deleteFromCart(id) {
+                let products = JSON.parse(localStorage.getItem("products"));
+                let currentProds = products.filter(item => {
+                    if (id != item.id) return true;
+                    else {
+                        setCount(-item.quantity)
+                        return false;
+                    }
+                });
+                //console.log(currentProds)
+                localStorage.setItem("products", JSON.stringify(currentProds));
+                updateCart();
+            }
+
+            function updateCart() {
+                let products = localStorage.getItem("products")
+
+                if (products) {
+                    $.ajax({
+                        url: `/visitor/cart/getproductdetails/${products}`,
+                        type: 'get',
+                        success: function (result) {
+                            //console.log(result);
+                            let html = '';
+
+                            result.products.forEach(prod => {
+                                html += `
+                                <div id="itembody${prod.id}" class="group_cart_item">
+                                    <div class="cart-left"><a class="cart-image" href="./product.html"><img src="/assets/prod/${prod.product_img}" alt="${prod.product_img}" title=""></a></div>
+                                        <div class="cart-right">
+                                            <div class="cart-title"><a href="./product.html">${prod.product_name}</a></div>
+                                            <div class="cart-price"><span class="money" data-currency-bdt="৳${prod.product_price}" data-currency="bdt">৳${prod.product_price}</span></div>
+                                            <div class="cart-qty">
+                                                <span class="quantity">qty: ${prod.quantity}</span>
+                                                <a title="add to wishlist" id="${prod.id}" class="wishlist-extra-crispy-1" onclick="" href="#">
+                                                    <span class="cs-icon icon-heart"></span>
+                                                </a>
+                                                <a class="cart-close cart-item-remove" id="${prod.id}" title="remove"">
+                                                    <span class="cs-icon icon-bin"></span>
+                                                </a>
+                                             </div>
+                                    </div>
+                                </div>
+                                    `
+                            })
+                            //console.log(html);
+                            $('.items').html(html);
+                            $('.subtotal').html(
+                                `<span>Subtotal:</span><span class="cart-total-right money" data-currency-bdt="${result.total}" data-currency="bdt">৳${result.total}</span>`
+                            );
+                            
+                        }
+                    });
+                }              
+            }
+
             setCount(null);
+            updateCart();
             $(".add-to-cart").on('click', (e) => {
                 let prodID = e.currentTarget.id;
                 if (typeof (Storage) !== "undefined") {
@@ -762,58 +819,25 @@
                         localStorage.setItem("products", JSON.stringify(products));                        
                     }
                     setCount(1);
+                    updateCart();
                 } else {
                     alert("Sorry, your browser does not support Web Storage...");
                 }
             });
             $("#cart-button").click(() => {
-                let products = localStorage.getItem("products")
+                $("#cart-infos").toggle();   
+            })
 
-
-                if (products) {
-                    $.ajax({
-                        url: `/visitor/cart/getproductdetails/${products}`,
-                        type: 'get',
-                        success: function (result) {
-                            console.log(result);
-                            let html = '';
-
-                            //result.foreach(prod => {
-                            //    html += `
-                            //    <div id="itembody${prod.id}" class="group_cart_item">
-                            //        <div class="cart-left"><a class="cart-image" href="./product.html"><img src="/assets/prod/${prod.product_img}" alt="${prod.product_img}" title=""></a></div>
-                            //            <div class="cart-right">
-                            //                <div class="cart-title"><a href="./product.html">${prod.product_name}</a></div>
-                            //                <div class="cart-price"><span class="money" data-currency-bdt="৳${prod.product_price}" data-currency="bdt">৳${prod.product_price}</span></div>
-                            //                <div class="cart-qty">
-                            //                    <span class="quantity">qty: 1</span>
-                            //                    <a title="add to wishlist" id="${prod.id}" class="wishlist-extra-crispy-1" onclick="" href="#">
-                            //                        <span class="cs-icon icon-heart"></span>
-                            //                    </a>
-                            //                    <a class="cart-close" id="${prod.id}" title="remove" onclick="dosomething();" href="">
-                            //                        <span class="cs-icon icon-bin"></span>
-                            //                    </a>
-                            //                 </div>
-                            //        </div>
-                            //    </div>
-                            //        `
-                            //})
-
-                            //console.log(html);
-                            //$('.items').html(html);
-
-
-                        }
-                    });
-                }
-                $("#cart-infos").toggle();
+            $(document).on("click", ".cart-item-remove", (e) => {
+                deleteFromCart(e.currentTarget.id);
             })
             $(".cart-clear").click(() => {              
-                localStorage.removeItem("products");
-                setCount(0)
-                $('.cart-count').html("0");
-                let content = '';
-                $('.items').html(content);
+                //localStorage.removeItem("products");
+                //setCount(0)
+                //$('.cart-count').html("0");
+                //let content = '';
+                //$('.items').html(content);
+                $("#cart-infos").hide(); 
             })
         });
     </script>
