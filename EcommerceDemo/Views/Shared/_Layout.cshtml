@@ -194,7 +194,7 @@
                                                                 
                                                             </div>
                                                             <div class="subtotal"><span>Subtotal:</span><span class="cart-total-right money" data-currency-usd="$30.00" data-currency="USD">$30.00</span></div>
-                                                            <div class="action"><button class="_btn" onclick="window.location='./cart.html'">View All Your Cart</button><button class="_btn float-right" onclick="window.location='./cart.html'">Proceed To Checkout</button></div>
+                                                            <div class="action"><button class="_btn" onclick="window.location='./cart.html'">View All Your Cart</button><button class="_btn float-right cart_checkout">Proceed To Checkout</button></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -332,7 +332,7 @@
 
                                                                 </div>
                                                                 <div class="subtotal"><span>Subtotal:</span><span class="cart-total-right money" data-currency-usd="$30.00" data-currency="USD">$30.00</span></div>
-                                                                <div class="action"><button class="_btn" onclick="window.location='./cart.html'">View All Your Cart</button><button class="_btn float-right" onclick="window.location='./cart.html'">Proceed To Checkout</button></div>
+                                                                <div class="action"><button class="_btn" onclick="window.location='./cart.html'">View All Your Cart</button><button class="_btn float-right cart_checkout" >Proceed To Checkout</button></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -714,6 +714,12 @@
     <script>
 
         $(document).ready(function () {
+
+            $('.cart_checkout').click(function () {
+
+                window.location.href = "/customer/order/checkout";
+
+            });
             
             function setCount(value) {
                 let count = localStorage.getItem("count");
