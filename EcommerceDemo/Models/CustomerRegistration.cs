@@ -23,7 +23,7 @@ namespace EcommerceDemo.Models
         [Display(Name = "Socail Media Link")]
         public String social_media_link { get; set; }
         [Required]
-        public String area { get; set; }
+        public String location { get; set; }
         [Required]
         public String city { get; set; }
         [Required]

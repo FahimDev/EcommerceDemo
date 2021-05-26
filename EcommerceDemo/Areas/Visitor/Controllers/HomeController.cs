@@ -243,7 +243,7 @@ namespace EcommerceDemo.Controllers
             customerObj.full_name = request.full_name;
             customerObj.contact = request.contact;
             customerObj.email = request.email;
-            customerObj.area = request.area;
+            customerObj.area = request.location;
             customerObj.city = request.city;
             customerObj.zip = request.zip;
             customerObj.social_media_link = request.social_media_link;
