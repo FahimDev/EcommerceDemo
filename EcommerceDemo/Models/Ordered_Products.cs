@@ -14,6 +14,9 @@ namespace EcommerceDemo.Models
         public int order_id { get; set; }
         [Required]
         public int product_id { get; set; }
+        [Required]
+        public int quantity { get; set; }
+        [Required]
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
     }

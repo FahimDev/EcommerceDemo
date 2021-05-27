@@ -53,7 +53,6 @@
                                         <a href="./collections.html" class="_btn">Continue Shopping</a>
                                         <div class="group_btn_right">
                                             <input type="button" class="_btn clearAllCart" value="Clear all">
-                                            <input type="submit" id="update-cart" class="_btn" name="update" value="Update cart">
                                         </div>
                                     </div>
                                     <div class="group-checkout-input">
@@ -86,7 +85,7 @@
                                             </div>
                                             <div class="checkout-content">
                                                 <div class="buttons clearfix">
-                                                    <input type="submit" id="checkout" class="_btn" name="checkout" value="Check Out">
+                                                    <input type="button" id="checkout-btn" class="_btn" name="checkout" value="Check Out">
                                                 </div>
                                             </div>
                                         </div>
@@ -129,6 +128,8 @@
                 loadCart();
             }
 
+                       
+
             function setCount(value) {
                 let count = localStorage.getItem("count");
                 if (value == 0) count = 0;
@@ -143,6 +144,29 @@
                 localStorage.setItem("count", count)
                 $('.cart-count').html(count);
             }
+
+
+            $("#checkout-btn").click(() => {
+                let products = localStorage.getItem("products");
+
+                if (products) {
+                    $.ajax({
+                        url: `/Customer/Order/PlaceOrder/${products}`,
+                        type: 'get',
+                        success: function (result) {
+                            console.log(result);
+                            if (result == "200") {
+                                localStorage.removeItem("products");
+                                setCount(0);
+                                alert("Order Placed Successfully");
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            }) 
 
 
             $(document).on("click", ".cart-item-remove", (e) => {

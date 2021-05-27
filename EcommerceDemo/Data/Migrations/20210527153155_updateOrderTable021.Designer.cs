@@ -4,14 +4,16 @@ using EcommerceDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EcommerceDemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210527153155_updateOrderTable021")]
+    partial class updateOrderTable021
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,9 +187,6 @@ namespace EcommerceDemo.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("product_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("quantity")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("updated_at")
