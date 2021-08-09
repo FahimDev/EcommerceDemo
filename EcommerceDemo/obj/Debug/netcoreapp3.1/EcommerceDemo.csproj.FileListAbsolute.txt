@@ -567,3 +567,4 @@ F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Vie
 C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Order\Checkout.cshtml.g.cs
 F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Order\Checkout.cshtml.g.cs
 F:\Programming\web\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Order\Index.cshtml.g.cs
+C:\C# Zone\ASP.NET Core\EcommerceDemo\EcommerceDemo\EcommerceDemo\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Order\Index.cshtml.g.cs
