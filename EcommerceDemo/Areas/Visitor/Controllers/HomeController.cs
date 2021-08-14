@@ -35,7 +35,22 @@ namespace EcommerceDemo.Controllers
 
         public IActionResult Index()
         {
-            return View(_db.Products.ToList());
+
+            var catList = _db.ProductCatagories.ToList();
+            List<CategoryProductsExtended> cpes = new List<CategoryProductsExtended>();
+            foreach (var item in catList)
+            {
+                var catProducts = _db.Products.Where(compare => compare.catagory_id == item.id).ToList();
+                CategoryProductsExtended cpeObj = new CategoryProductsExtended() {
+                    id = item.id,
+                    catagory_name = item.catagory_name,
+                    catagory_img_path = item.catagory_img_path,
+                    products = catProducts,
+                };
+                cpes.Add(cpeObj);
+            }    
+
+            return View(cpes);
         }
 
         public IActionResult Privacy()
