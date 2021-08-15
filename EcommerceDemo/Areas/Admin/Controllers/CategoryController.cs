@@ -62,17 +62,27 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             {
                 System.Diagnostics.Debug.WriteLine("================================>" + categoryCreate.imageblob);
                 
-                String convert = categoryCreate.imageblob.Replace("data:image/png;base64,", String.Empty);
+                String convert = categoryCreate.imageblob.Replace("data:image/png;base64,", String.Empty);//Cover
+
+                String convertBanner = categoryCreate.imageblob_banner.Replace("data:image/png;base64,", String.Empty);//Homepage Banner
 
 
                 String uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "assets", "banner");
 
-                
+                //Cover Photo
                 byte[] bytes = Convert.FromBase64String(convert);
                 MemoryStream ms = new MemoryStream(bytes);
                 
                 Image pic = Image.FromStream(ms);
-                
+                //_____________________________________________
+
+                //Banner Photo
+
+                byte[] banner_bytes = Convert.FromBase64String(convertBanner);
+                MemoryStream banner_ms = new MemoryStream(banner_bytes);
+
+                Image banner_pic = Image.FromStream(banner_ms);
+
 
                 /*
                   Must install the System.Drawing.Common NuGet package. This contains Image and other related types like Bitmap.
@@ -80,19 +90,29 @@ namespace EcommerceDemo.Areas.Admin.Controllers
                         PM> Install-Package System.Drawing.Common
                  */
 
-
+                //Cover Photo
                 String imageName = Guid.NewGuid().ToString() + "_" + "dasda.png";
 
                 String imgPath = Path.Combine(uploadFolder, imageName);
 
                 pic.Save(imgPath);
 
+                //_____________________________________________
+
+                //Banner Photo
+                String bannerImageName = Guid.NewGuid().ToString() + "_" + "dasdaHome.png";
+
+                String bannerImgPath = Path.Combine(uploadFolder, bannerImageName);
+
+                banner_pic.Save(bannerImgPath);
+
                 //categoryCreate.category_image.CopyTo(new FileStream(imgPath, FileMode.Create));
-         
+
                 ProductCatagories prodCat = new ProductCatagories();
                // prodCat.product_volume_id = catVol_id;
                 prodCat.catagory_name = categoryCreate.category_name;
                 prodCat.catagory_img_path = imageName;
+                prodCat.banner_img_path = bannerImageName;
                 prodCat.policy = categoryCreate.category_policy;
                 prodCat.created_at = DateTime.Now;
                 prodCat.unit = categoryCreate.category_unit;

@@ -27,5 +27,8 @@ namespace EcommerceDemo.Models
         public string category_img_path { get; set; }
         public String imageblob { get; set; }
 
+        public string category_banner_image { get; set; }
+        public String imageblob_banner { get; set; }
+
     }
 }

@@ -1,15 +1,12 @@
-﻿using EcommerceDemo.Models;
+﻿using EcommerceDemo.Data;
+using EcommerceDemo.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using EcommerceDemo.Data;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using System.Web;
 using System.Web.Helpers;
 
 namespace EcommerceDemo.Controllers
@@ -38,6 +35,7 @@ namespace EcommerceDemo.Controllers
 
             var catList = _db.ProductCatagories.ToList();
             List<CategoryProductsExtended> cpes = new List<CategoryProductsExtended>();
+
             foreach (var item in catList)
             {
                 var catProducts = _db.Products.Where(compare => compare.catagory_id == item.id).ToList();
@@ -45,10 +43,62 @@ namespace EcommerceDemo.Controllers
                     id = item.id,
                     catagory_name = item.catagory_name,
                     catagory_img_path = item.catagory_img_path,
+                    banner_img_path = item.banner_img_path,
                     products = catProducts,
                 };
+
+                IDictionary<int, int> list_best = new Dictionary<int, int>();
+                IDictionary<int, int> list_hot = new Dictionary<int, int>();
+
+
+                foreach (var prod in catProducts)
+                {
+                    var total_sell_best = _db.Ordered_Products.Where(compare => compare.product_id == prod.id).Sum(total_prod => total_prod.quantity);
+                    //.GroupBy(p => new { newProd = p.product_id }).Select(calculate => new { newProd = calculate.Key.newProd, total = calculate.Sum() });
+
+                    list_best.Add(prod.id, total_sell_best); //adding a key/value using the Add() method
+
+                    //_______________________________________________________________________________________________
+
+                    var firstDay = DateTime.Today.AddDays(-30);
+                    //-----> SQL for last 30 days data ===> .Where( p => p.created_at >= firstDay)
+                    var total_sell_hot = _db.Ordered_Products.Where(compare => compare.product_id == prod.id).Where(date_limit => date_limit.created_at >= firstDay).Sum(total_prod => total_prod.quantity);
+
+                    list_hot.Add(prod.id, total_sell_hot); //adding a key/value using the Add() method
+
+                }
+
+                int max = 0;
+                int maxId = 0;
+
+                foreach (var findMax in list_best)
+                {
+                    if (findMax.Value > max)
+                    {
+                        max = findMax.Value;
+                        maxId = findMax.Key;
+                    }
+                }
+
+                int max_hot = 0;
+                int maxId_hot = 0;
+
+                foreach (var findMax in list_hot)
+                {
+                    if (findMax.Value > max)
+                    {
+                        max_hot = findMax.Value;
+                        maxId_hot = findMax.Key;
+                    }
+                }
+
+                cpeObj.hot_id = maxId_hot;
+                cpeObj.best_id = maxId;
+
                 cpes.Add(cpeObj);
-            }    
+            }
+
+            System.Diagnostics.Debug.WriteLine(cpes);
 
             return View(cpes);
         }
