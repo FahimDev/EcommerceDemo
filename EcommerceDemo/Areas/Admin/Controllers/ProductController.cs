@@ -199,6 +199,11 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
             if (HttpContext.Session.GetInt32("roleIdSession") == 1)
             {
+                if (id == 0)
+                {
+                    return RedirectToRoute(Request.Headers["Referer"].ToString());
+                }
+
                 var products = _db.Products.Find(id);
                 var prodImg = _db.ProductImages.Where(prodImg => prodImg.product_id == id).FirstOrDefault();
 
