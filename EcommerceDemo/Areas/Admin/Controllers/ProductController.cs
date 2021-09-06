@@ -211,6 +211,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
                 AddNewProduct prod = new AddNewProduct
                 {
+                    prod_id = id,
                     product_name = products.product_name,
                     category_id = products.catagory_id,
                     company_id = products.company_id,

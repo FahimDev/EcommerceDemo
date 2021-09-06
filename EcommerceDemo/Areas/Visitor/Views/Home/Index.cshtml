@@ -112,6 +112,26 @@
         </section>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#quickview").click(function () {
+
+            let node = document.getElementById("prodName");
+            let prodName = node.textContent;
+            let prodDes = $("#prodDescription").val();
+            let prodImg = $("#prodImg").attr('src');
+
+            var prodPrice = $("#prodPrice").text();
+            //let prodID = $("#prodUnit").val();
+            console.log(prodPrice);
+            $("#prod_title").html(prodName);
+            $("#prod_desc").html(prodDes);
+            $("#prod-img").attr('src', prodImg);
+            $("#prod-cost").text(prodPrice);
+
+        });
+    });
+</script>
 @foreach (var item in Model) { 
 
     <div class="shopify-section index-section index-section-product">
@@ -126,26 +146,7 @@
                         </div>
                         <div class="home-product-inner">
                             <div class="home-product-content">
-                                <script>
-                                    $(document).ready(function () {
-                                        $("#quickview").click(function () {
-
-                                            let node = document.getElementById("prodName");
-                                            let prodName = node.textContent;
-                                            let prodDes = $("#prodDescription").val();
-                                            let prodImg = $("#prodImg").attr('src');
-
-                                            var prodPrice = $("#prodPrice").text();
-                                            //let prodID = $("#prodUnit").val();
-                                            console.log(prodPrice);
-                                            $("#prod_title").html(prodName);
-                                            $("#prod_desc").html(prodDes);
-                                            $("#prod-img").attr('src', prodImg);
-                                            $("#prod-cost").text(prodPrice);
-
-                                        });
-                                    });
-                                </script>
+                                
                                 
                                 <!--Strat: Product Body-->
                                 @foreach (var product in item.products)

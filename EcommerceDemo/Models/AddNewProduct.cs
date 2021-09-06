@@ -9,6 +9,7 @@ namespace EcommerceDemo.Models
 {
     public class AddNewProduct
     {
+        public int prod_id { get; set; }
         [Required]
         public int category_id { get; set; }
         [Required]

@@ -85,20 +85,23 @@ namespace EcommerceDemo.Controllers
 
                 foreach (var findMax in list_hot)
                 {
-                    if (findMax.Value > max)
+                    if (findMax.Value > max_hot)
                     {
                         max_hot = findMax.Value;
                         maxId_hot = findMax.Key;
                     }
+                    System.Diagnostics.Debug.WriteLine(findMax.Key);
+                    System.Diagnostics.Debug.WriteLine(findMax.Value);
+                    
                 }
-
+                System.Diagnostics.Debug.WriteLine(maxId_hot + "<-->" + max_hot);
                 cpeObj.hot_id = maxId_hot;
                 cpeObj.best_id = maxId;
 
                 cpes.Add(cpeObj);
             }
 
-            System.Diagnostics.Debug.WriteLine(cpes);
+            
 
             return View(cpes);
         }
