@@ -154,6 +154,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
                 category.category_unit = data.unit;
                 category.category_policy = data.policy;
                 category.category_img_path = data.catagory_img_path;
+                category.category_banner_image = data.banner_img_path;
                 category.volume_small = data.small;
                 category.volume_medium = data.medium;
                 category.volume_large = data.large;
@@ -185,6 +186,21 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
                     pic.Save(imgPath);
                     prodCat.catagory_img_path = imageName;
+                }
+
+                if (categoryUpdate.imageblob_banner != null)
+                {
+                    String convert = categoryUpdate.imageblob_banner.Replace("data:image/png;base64,", String.Empty);
+                    String uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "assets", "banner");
+
+                    byte[] bytes = Convert.FromBase64String(convert);
+                    MemoryStream ms = new MemoryStream(bytes);
+                    Image pic = Image.FromStream(ms);
+                    String imageName = Guid.NewGuid().ToString() + "_" + "dasdaHome.png";
+                    String imgPath = Path.Combine(uploadFolder, imageName);
+
+                    pic.Save(imgPath);
+                    prodCat.banner_img_path = imageName;
                 }
 
                 prodCat.catagory_name = categoryUpdate.category_name;
