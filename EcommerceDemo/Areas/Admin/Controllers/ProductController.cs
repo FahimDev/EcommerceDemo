@@ -209,7 +209,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
 
                 System.Diagnostics.Debug.WriteLine("........................>>>" + id);
 
-                AddNewProduct prod = new AddNewProduct
+                UpdateProduct prod = new UpdateProduct
                 {
                     prod_id = id,
                     product_name = products.product_name,
@@ -235,7 +235,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             }
         }
         [HttpPost]
-        public IActionResult Update(int id, AddNewProduct products)
+        public IActionResult Update(int id, UpdateProduct products)
         {
             var createProduct = _db.ProductCatagories.ToList();
 

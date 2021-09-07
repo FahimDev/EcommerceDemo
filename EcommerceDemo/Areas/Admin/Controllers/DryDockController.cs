@@ -38,7 +38,7 @@ namespace EcommerceDemo.Areas.Admin.Controllers
             {
                 
                 var roles = _db.EmpRoles.ToList();
-                System.Diagnostics.Debug.WriteLine(roles[0].role_name);
+                //System.Diagnostics.Debug.WriteLine(roles[0].role_name);
                 TempData["Roles"] = roles;
                 
                             
