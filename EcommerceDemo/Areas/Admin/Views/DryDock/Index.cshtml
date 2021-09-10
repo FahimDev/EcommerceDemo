@@ -558,6 +558,14 @@
 <script src="~/adminAsset/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 <script src="~/adminAsset/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
+    $(document).ready(function () {
+        $.get("/Admin/ajax/GetDashboardData", function (data, status) {
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+</script>
+<script>
         (function($) {
             "use strict";
 
