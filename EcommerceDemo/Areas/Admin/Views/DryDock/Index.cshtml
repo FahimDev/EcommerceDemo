@@ -183,9 +183,9 @@
                         </div>
                     </div>
                     <h4 class="mb-0">
-                        <span class="count">10468</span>
+                        <span class="count" id="totalOrderToday"></span>
                     </h4>
-                    <p class="text-light">Total Order(s) Today</p>
+                    <p class="text-light">Total Order(s) <br /> Today</p>
 
                     <div class="chart-wrapper px-0" style="height:70px;" height="70">
                         <canvas id="widgetChart1"></canvas>
@@ -213,7 +213,7 @@
                         </div>
                     </div>
                     <h4 class="mb-0">
-                        <span class="count">10468</span>
+                        <span class="count" id="totalSellToday"></span>
                     </h4>
                     <p class="text-light">Total Sell <br>Today</p>
 
@@ -271,7 +271,7 @@
                         </div>
                     </div>
                     <h4 class="mb-0">
-                        <span class="count">10468</span>
+                        <span class="count" id="totalCustomer"></span>
                     </h4>
                     <p class="text-light">Total Registerd Customers</p>
 
@@ -560,9 +560,13 @@
 <script>
     $(document).ready(function () {
         $.get("/Admin/ajax/GetDashboardData", function (data, status) {
-            alert("Data: " + data + "\nStatus: " + status);
+            $("#totalOrderToday").html(data.total_order);
+            $("#totalSellToday").html(data.total_sell);
+            $("#totalCustomer").html(data.total_customer);
+
+            console.log(data.total_customer)
         });
-        alert("Data: " + data + "\nStatus: " + status);
+
     });
 </script>
 <script>
